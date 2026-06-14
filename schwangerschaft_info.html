@@ -1,0 +1,2551 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schwangerschaft – Dein umfassender Begleiter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose:      #c97a7a;
+    --rose-soft: #e8c4c4;
+    --rose-pale: #f9f0f0;
+    --sage:      #7a9e87;
+    --sage-soft: #b8d4c0;
+    --cream:     #fdf8f3;
+    --warm:      #f5ede3;
+    --text:      #2e2320;
+    --text-mid:  #6b4f4a;
+    --text-soft: #9e7f7a;
+    --border:    #e8d8d4;
+    --gold:      #c9a96e;
+    --serif:     'Cormorant Garamond', serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  a, button, [onclick] { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+    overflow-x: hidden;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--warm); }
+  ::-webkit-scrollbar-thumb { background: var(--rose-soft); border-radius: 3px; }
+
+  /* ── NAVIGATION ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(253,248,243,.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--rose);
+    letter-spacing: .02em;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex; gap: 1.8rem; list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-mid);
+    font-size: .85rem;
+    font-weight: 500;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--rose); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+    background: linear-gradient(160deg, #fdf0ed 0%, #f9f5ee 40%, #eef5f0 100%);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(201,122,122,.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--rose-pale);
+    border: 1px solid var(--rose-soft);
+    color: var(--rose);
+    font-size: .75rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: .4rem 1.2rem;
+    border-radius: 100px;
+    margin-bottom: 2rem;
+    animation: fadeUp .8s ease both;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--text);
+    animation: fadeUp .8s .1s ease both;
+  }
+  .hero h1 em {
+    color: var(--rose);
+    font-style: italic;
+  }
+  .hero-sub {
+    max-width: 640px;
+    margin: 2rem auto 3rem;
+    font-size: 1.15rem;
+    color: var(--text-mid);
+    font-weight: 300;
+    animation: fadeUp .8s .2s ease both;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+    animation: fadeUp .8s .3s ease both;
+  }
+  .btn {
+    display: inline-block;
+    padding: .85rem 2.2rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: .9rem;
+    font-weight: 600;
+    transition: all .25s;
+    cursor: pointer; border: none;
+  }
+  .btn-primary {
+    background: var(--rose);
+    color: #fff;
+    box-shadow: 0 4px 24px rgba(201,122,122,.35);
+  }
+  .btn-primary:hover {
+    background: #b86b6b;
+    box-shadow: 0 6px 32px rgba(201,122,122,.45);
+    transform: translateY(-2px);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--rose);
+    border: 1.5px solid var(--rose-soft);
+  }
+  .btn-outline:hover {
+    background: var(--rose-pale);
+    transform: translateY(-2px);
+  }
+
+  /* ── STATS BAND ── */
+  .stats {
+    background: var(--rose);
+    padding: 3rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
+    gap: 2rem;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 3rem;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1;
+  }
+  .stat-label {
+    color: rgba(255,255,255,.8);
+    font-size: .8rem;
+    font-weight: 500;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    margin-top: .4rem;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 2rem; }
+  section:nth-child(even) { background: var(--warm); }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+  .container-narrow { max-width: 780px; margin: 0 auto; }
+
+  .section-label {
+    display: inline-block;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+  .section-intro {
+    font-size: 1.05rem;
+    color: var(--text-mid);
+    max-width: 680px;
+    margin-bottom: 3.5rem;
+    font-weight: 300;
+  }
+
+  /* ── TRIMESTER TIMELINE ── */
+  .trimester-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+    gap: 2rem;
+  }
+  .trimester-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2.5rem;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    transition: transform .3s, box-shadow .3s;
+  }
+  .trimester-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(201,122,122,.12);
+  }
+  .trimester-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  }
+  .trimester-card.t1::before { background: linear-gradient(90deg, #e8a4a4, #f0c4a0); }
+  .trimester-card.t2::before { background: linear-gradient(90deg, #a4c9b0, #a0c4e8); }
+  .trimester-card.t3::before { background: linear-gradient(90deg, #c4a4e8, #e8a4c4); }
+  .trimester-number {
+    font-family: var(--serif);
+    font-size: 4rem;
+    font-weight: 300;
+    color: var(--rose-soft);
+    line-height: 1;
+    margin-bottom: .5rem;
+  }
+  .trimester-title {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    color: var(--text);
+    margin-bottom: .3rem;
+  }
+  .trimester-weeks {
+    font-size: .8rem;
+    color: var(--text-soft);
+    font-weight: 600;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .trimester-card p {
+    color: var(--text-mid);
+    font-size: .95rem;
+    margin-bottom: 1.2rem;
+  }
+  .milestone-list {
+    list-style: none;
+    display: flex; flex-direction: column; gap: .6rem;
+  }
+  .milestone-list li {
+    display: flex; align-items: flex-start; gap: .8rem;
+    font-size: .9rem;
+    color: var(--text-mid);
+  }
+  .milestone-list li::before {
+    content: '✦';
+    color: var(--rose-soft);
+    font-size: .7rem;
+    flex-shrink: 0;
+    margin-top: .3rem;
+  }
+
+  /* ── WEEKLY DEVELOPMENT ── */
+  .week-accordion { display: flex; flex-direction: column; gap: .8rem; }
+  .week-item {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .week-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 1.8rem;
+    cursor: pointer;
+    transition: background .2s;
+    user-select: none;
+  }
+  .week-header:hover { background: var(--rose-pale); }
+  .week-header-left { display: flex; align-items: center; gap: 1.2rem; }
+  .week-badge {
+    background: var(--rose);
+    color: #fff;
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: .9rem;
+    flex-shrink: 0;
+  }
+  .week-header h3 {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--text);
+  }
+  .week-header p { font-size: .85rem; color: var(--text-soft); }
+  .week-arrow {
+    font-size: 1.2rem;
+    color: var(--text-soft);
+    transition: transform .3s;
+  }
+  .week-item.open .week-arrow { transform: rotate(180deg); }
+  .week-body {
+    display: none;
+    padding: 0 1.8rem 1.8rem;
+  }
+  .week-item.open .week-body { display: block; }
+  .week-body p { color: var(--text-mid); font-size: .95rem; margin-bottom: .8rem; }
+  .week-body ul {
+    list-style: none;
+    display: grid; grid-template-columns: 1fr 1fr; gap: .5rem;
+  }
+  .week-body ul li {
+    font-size: .88rem;
+    color: var(--text-mid);
+    padding-left: 1.2rem;
+    position: relative;
+  }
+  .week-body ul li::before {
+    content: '·';
+    position: absolute; left: 0;
+    color: var(--rose);
+    font-weight: 700;
+  }
+
+  /* ── SYMPTOMS ── */
+  .symptoms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+    gap: 1.5rem;
+  }
+  .symptom-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.8rem;
+    display: flex; flex-direction: column; gap: .8rem;
+    transition: all .25s;
+  }
+  .symptom-card:hover {
+    border-color: var(--rose-soft);
+    box-shadow: 0 8px 30px rgba(201,122,122,.1);
+    transform: translateY(-3px);
+  }
+  .symptom-icon {
+    font-size: 2rem;
+    width: 52px; height: 52px;
+    background: var(--rose-pale);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .symptom-card h3 {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    color: var(--text);
+  }
+  .symptom-card p { font-size: .9rem; color: var(--text-mid); }
+  .severity-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .severity-fill { height: 100%; border-radius: 2px; background: var(--rose); }
+  .severity-label { font-size: .8rem; color: var(--text-soft); }
+  .week-badge.sage { background: var(--sage); }
+  .week-badge.purple { background: #a07ab8; }
+
+  /* ── NUTRITION TABLE ── */
+  .nutrition-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+    gap: 1.5rem;
+  }
+  .nutrition-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.8rem;
+    border: 1px solid var(--border);
+  }
+  .nutrition-card h3 {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    color: var(--text);
+    margin-bottom: .3rem;
+    display: flex; align-items: center; gap: .6rem;
+  }
+  .nutrition-card .sub { font-size: .78rem; color: var(--text-soft); margin-bottom: 1rem; }
+  .nutrition-card ul { list-style: none; }
+  .nutrition-card ul li {
+    display: flex; justify-content: space-between;
+    padding: .5rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: .9rem;
+    color: var(--text-mid);
+  }
+  .nutrition-card ul li:last-child { border-bottom: none; }
+  .nutrition-card ul li span { font-weight: 600; color: var(--sage); }
+
+  /* ── CHECKLIST ── */
+  .checklist-group { margin-bottom: 3rem; }
+  .checklist-group h3 {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    color: var(--text);
+    margin-bottom: 1.2rem;
+    padding-bottom: .8rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .checklist {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+    gap: .6rem;
+    list-style: none;
+  }
+  .checklist li {
+    display: flex; align-items: flex-start; gap: .8rem;
+    font-size: .92rem;
+    color: var(--text-mid);
+    padding: .6rem;
+    border-radius: 8px;
+    transition: background .2s;
+    cursor: pointer;
+  }
+  .checklist li:hover { background: var(--rose-pale); }
+  .check-box {
+    width: 20px; height: 20px;
+    border: 2px solid var(--rose-soft);
+    border-radius: 6px;
+    flex-shrink: 0;
+    margin-top: .1rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .2s;
+    font-size: .75rem;
+    color: #fff;
+  }
+  .checklist li.checked .check-box {
+    background: var(--sage);
+    border-color: var(--sage);
+  }
+  .checklist li.checked span { text-decoration: line-through; color: var(--text-soft); }
+
+  /* ── APPOINTMENTS / VORSORGE ── */
+  .timeline {
+    position: relative;
+    padding-left: 3rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 14px; top: 0; bottom: 0; width: 2px;
+    background: linear-gradient(to bottom, var(--rose-soft), var(--sage-soft));
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+  }
+  .timeline-dot {
+    position: absolute;
+    left: -2.75rem;
+    top: .3rem;
+    width: 16px; height: 16px;
+    background: var(--rose);
+    border: 3px solid var(--cream);
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--rose-soft);
+  }
+  .timeline-dot.sage { background: var(--sage); box-shadow: 0 0 0 2px var(--sage-soft); }
+  .timeline-week.sage { color: var(--sage); }
+  .timeline-week {
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: .3rem;
+  }
+  .timeline-item h3 {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    color: var(--text);
+    margin-bottom: .4rem;
+  }
+  .timeline-item p { font-size: .9rem; color: var(--text-mid); }
+
+  /* ── BIRTH METHODS ── */
+  .birth-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px,1fr));
+    gap: 2rem;
+  }
+  .birth-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2.5rem;
+    border: 1px solid var(--border);
+    transition: all .3s;
+  }
+  .birth-card:hover {
+    box-shadow: 0 16px 40px rgba(0,0,0,.07);
+    transform: translateY(-4px);
+  }
+  .birth-card h3 {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    color: var(--text);
+    margin-bottom: 1rem;
+    padding-bottom: .8rem;
+    border-bottom: 2px solid var(--rose-pale);
+  }
+  .birth-card p { font-size: .9rem; color: var(--text-mid); margin-bottom: .8rem; }
+  .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+  .pros h4, .cons h4 { font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: .5rem; }
+  .pros h4 { color: var(--sage); }
+  .cons h4 { color: var(--rose); }
+  .pros ul, .cons ul { list-style: none; }
+  .pros ul li, .cons ul li { font-size: .83rem; color: var(--text-mid); padding: .2rem 0; }
+  .pros ul li::before { content: '+ '; color: var(--sage); font-weight: 700; }
+  .cons ul li::before { content: '– '; color: var(--rose); font-weight: 700; }
+
+  /* ── FAQ ── */
+  .faq-list { display: flex; flex-direction: column; gap: 1rem; }
+  .faq-item {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .faq-q {
+    padding: 1.4rem 1.8rem;
+    cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 1rem;
+    transition: background .2s;
+  }
+  .faq-q:hover { background: var(--rose-pale); }
+  .faq-q h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .faq-icon {
+    width: 28px; height: 28px;
+    background: var(--rose-pale);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--rose);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    transition: transform .3s;
+    font-weight: 700;
+  }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-a {
+    display: none;
+    padding: 0 1.8rem 1.6rem;
+    font-size: .93rem;
+    color: var(--text-mid);
+    border-top: 1px solid var(--border);
+    padding-top: 1.2rem;
+  }
+  .faq-item.open .faq-a { display: block; }
+
+  /* ── INFO BOXES ── */
+  .info-box {
+    background: var(--rose-pale);
+    border-left: 4px solid var(--rose);
+    border-radius: 0 12px 12px 0;
+    padding: 1.4rem 1.8rem;
+    margin: 2rem 0;
+    font-size: .93rem;
+    color: var(--text-mid);
+  }
+  .info-box strong { color: var(--rose); display: block; margin-bottom: .4rem; }
+
+  .warning-box {
+    background: #fff8e8;
+    border-left: 4px solid var(--gold);
+    border-radius: 0 12px 12px 0;
+    padding: 1.4rem 1.8rem;
+    margin: 2rem 0;
+    font-size: .93rem;
+    color: var(--text-mid);
+  }
+  .warning-box strong { color: var(--gold); display: block; margin-bottom: .4rem; }
+
+  .success-box {
+    background: #eef5f0;
+    border-left: 4px solid var(--sage);
+    border-radius: 0 12px 12px 0;
+    padding: 1.4rem 1.8rem;
+    margin: 2rem 0;
+    font-size: .93rem;
+    color: var(--text-mid);
+  }
+  .success-box strong { color: var(--sage); display: block; margin-bottom: .4rem; }
+
+  /* ── KLINIKBAG SECTION ── */
+  .bag-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+    gap: 2rem;
+  }
+  .bag-col h3 {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    color: var(--text);
+    margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: .6rem;
+  }
+  .bag-col ul { list-style: none; }
+  .bag-col ul li {
+    padding: .5rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: .9rem;
+    color: var(--text-mid);
+    display: flex; gap: .8rem; align-items: flex-start;
+    cursor: pointer;
+    transition: background .15s;
+  }
+  .bag-col ul li:last-child { border-bottom: none; }
+  .bag-col ul li:hover { color: var(--text); }
+  .bag-check {
+    width: 18px; height: 18px;
+    border: 1.5px solid var(--rose-soft);
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .65rem;
+    color: #fff;
+    transition: all .2s;
+  }
+  li.bag-checked .bag-check { background: var(--sage); border-color: var(--sage); }
+  li.bag-checked span { text-decoration: line-through; color: var(--text-soft); }
+
+  /* ── MENTAL HEALTH ── */
+  .mental-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+    gap: 1.5rem;
+  }
+  .mental-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--sage);
+  }
+  .mental-card h3 {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    color: var(--text);
+    margin-bottom: .8rem;
+  }
+  .mental-card p { font-size: .9rem; color: var(--text-mid); }
+
+  /* ── PARTNER SECTION ── */
+  .partner-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+    gap: 1.5rem;
+  }
+  .partner-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.8rem;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--gold);
+    transition: all .25s;
+  }
+  .partner-card:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,.07);
+    transform: translateY(-3px);
+  }
+  .partner-card h3 {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    color: var(--text);
+    margin-bottom: .8rem;
+  }
+  .partner-card p { font-size: .9rem; color: var(--text-mid); }
+
+  /* ── CALCULATOR ── */
+  .calc-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2.5rem;
+    border: 1px solid var(--border);
+    max-width: 520px;
+    margin: 0 auto;
+    box-shadow: 0 8px 40px rgba(201,122,122,.08);
+  }
+  .calc-card h3 {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text);
+  }
+  .form-group { margin-bottom: 1.5rem; }
+  .form-group label {
+    display: block;
+    font-size: .83rem;
+    font-weight: 600;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: .5rem;
+  }
+  .form-group input, .form-group select {
+    width: 100%;
+    padding: .9rem 1.2rem;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    font-size: .95rem;
+    color: var(--text);
+    background: var(--cream);
+    transition: border-color .2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .form-group input:focus, .form-group select:focus {
+    outline: none;
+    border-color: var(--rose);
+  }
+  .calc-result {
+    background: var(--rose-pale);
+    border-radius: 14px;
+    padding: 1.5rem;
+    text-align: center;
+    margin-top: 1.5rem;
+    display: none;
+  }
+  .calc-result.show { display: block; }
+  .calc-result .big { font-family: var(--serif); font-size: 2rem; color: var(--rose); }
+  .calc-result .small { font-size: .85rem; color: var(--text-mid); margin-top: .4rem; }
+
+  /* ── GLOSSAR ── */
+  .glossar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+    gap: 1.2rem;
+  }
+  .glossar-item {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.4rem 1.6rem;
+  }
+  .glossar-item dt {
+    font-weight: 600;
+    color: var(--rose);
+    font-size: .92rem;
+    margin-bottom: .3rem;
+  }
+  .glossar-item dd { font-size: .88rem; color: var(--text-mid); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--text);
+    color: rgba(255,255,255,.6);
+    padding: 4rem 2rem 2rem;
+  }
+  .footer-grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+  .footer-brand p {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+  .footer-brand small { font-size: .82rem; line-height: 1.7; }
+  .footer-col h4 {
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.4);
+    margin-bottom: 1.2rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: .6rem; }
+  .footer-col ul li a {
+    color: rgba(255,255,255,.6);
+    text-decoration: none;
+    font-size: .9rem;
+    transition: color .2s;
+  }
+  .footer-col ul li a:hover { color: #fff; }
+  .footer-bottom {
+    max-width: 1100px; margin: 0 auto;
+    border-top: 1px solid rgba(255,255,255,.08);
+    padding-top: 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: .82rem; flex-wrap: wrap; gap: 1rem;
+  }
+
+  /* ── CONTENT CARD ── */
+  .content-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2.5rem;
+    border: 1px solid var(--border);
+    margin-top: 2rem;
+  }
+  .content-card p {
+    color: var(--text-mid);
+    margin-bottom: 1rem;
+  }
+  .content-card p:last-child { margin-bottom: 0; }
+
+  /* ── SUB-HEADINGS ── */
+  .sub-heading {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+  }
+  .sub-heading.lg { font-size: 2rem; margin: 3rem 0 1.5rem; }
+  .sub-heading.sm { font-size: 1.5rem; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── HAMBURGER BUTTON ── */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px; height: 40px;
+    background: none; border: none;
+    cursor: pointer; padding: 4px;
+    border-radius: 8px;
+    transition: background .2s;
+  }
+  .nav-hamburger:hover { background: var(--rose-pale); }
+  .nav-hamburger span {
+    display: block;
+    height: 2px; width: 100%;
+    background: var(--text-mid);
+    border-radius: 2px;
+    transition: all .3s;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Mobile nav drawer */
+  .nav-drawer {
+    display: none;
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    background: rgba(253,248,243,.98);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 999;
+    padding: 1rem 1.2rem 1.5rem;
+    flex-direction: column;
+    gap: .2rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,.08);
+  }
+  .nav-drawer.open { display: flex; }
+  .nav-drawer a {
+    display: block;
+    padding: .75rem 1rem;
+    text-decoration: none;
+    color: var(--text-mid);
+    font-size: .95rem;
+    font-weight: 500;
+    border-radius: 10px;
+    transition: all .15s;
+  }
+  .nav-drawer a:hover, .nav-drawer a:active {
+    background: var(--rose-pale);
+    color: var(--rose);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    /* Navigation: show hamburger, hide desktop links */
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+
+    /* Hero */
+    .hero { padding: 6rem 1.2rem 3rem; }
+    .hero-sub { font-size: 1rem; margin: 1.4rem auto 2rem; }
+    .hero-cta { flex-direction: column; align-items: center; }
+    .btn { width: 100%; max-width: 320px; text-align: center; }
+
+    /* Sections */
+    section { padding: 4rem 1.2rem; }
+
+    /* Stats */
+    .stats { padding: 2rem 1.2rem; gap: 1rem; grid-template-columns: repeat(3, 1fr); }
+    .stat-num { font-size: 2rem; }
+    .stat-label { font-size: .72rem; }
+
+    /* Trimester grid */
+    .trimester-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+    .trimester-card { padding: 1.8rem; }
+
+    /* Tabs: scroll horizontally */
+    .tabs { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: .4rem; scrollbar-width: none; }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab-btn { flex-shrink: 0; }
+
+    /* Weekly accordion */
+    .week-header { padding: 1rem 1.2rem; }
+    .week-header-left { gap: .8rem; }
+    .week-badge { width: 40px; height: 40px; font-size: .8rem; border-radius: 10px; }
+    .week-header h3 { font-size: 1.05rem; }
+    .week-body { padding: 0 1.2rem 1.4rem; }
+    .week-body ul { grid-template-columns: 1fr; }
+
+    /* Symptoms */
+    .symptoms-grid { grid-template-columns: 1fr; }
+
+    /* Nutrition */
+    .nutrition-grid { grid-template-columns: 1fr; }
+
+    /* Checklist */
+    .checklist { grid-template-columns: 1fr; }
+
+    /* Vorsorge timeline */
+    .timeline { padding-left: 2.2rem; }
+
+    /* Birth grid */
+    .birth-grid { grid-template-columns: 1fr; }
+    .birth-card { padding: 1.8rem; }
+    .pros-cons { grid-template-columns: 1fr; }
+
+    /* Kliniktasche */
+    .bag-columns { grid-template-columns: 1fr; }
+
+    /* Mental / Partner grids */
+    .mental-grid { grid-template-columns: 1fr; }
+    .partner-grid { grid-template-columns: 1fr; }
+
+    /* Calculator */
+    .calc-card { padding: 1.6rem 1.2rem; }
+    .content-card { padding: 1.8rem; }
+
+    /* Glossar */
+    .glossar-grid { grid-template-columns: 1fr; }
+
+    /* FAQ */
+    .faq-q { padding: 1.1rem 1.2rem; }
+    .faq-q h3 { font-size: .95rem; }
+    .faq-a { padding: 0 1.2rem 1.2rem; padding-top: 1rem; }
+
+    /* Footer */
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+
+  @media (max-width: 480px) {
+    section { padding: 3rem 1rem; }
+    .hero { padding: 5rem 1rem 2.5rem; }
+    .stats { grid-template-columns: 1fr 1fr; }
+    .birth-card { padding: 1.4rem; }
+    .calc-card { padding: 1.2rem 1rem; }
+    .calc-result .big { font-size: 1.6rem; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .info-box, .warning-box, .success-box { padding: 1rem 1.2rem; }
+    .trimester-card { padding: 1.4rem; }
+    .week-header h3 { font-size: .95rem; }
+  }
+
+  /* ── PROGRESS DOTS ── */
+  .progress-dots {
+    display: flex; justify-content: center; gap: .5rem; margin-bottom: 2rem;
+  }
+  .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+    transition: all .3s;
+  }
+  .dot.active { background: var(--rose); transform: scale(1.4); }
+
+  /* TAB SYSTEM */
+  .tabs { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+  .tab-btn {
+    padding: .6rem 1.4rem;
+    border: 1.5px solid var(--border);
+    border-radius: 100px;
+    background: transparent;
+    cursor: pointer;
+    font-size: .85rem;
+    font-weight: 500;
+    color: var(--text-mid);
+    font-family: 'DM Sans', sans-serif;
+    transition: all .2s;
+  }
+  .tab-btn:hover { border-color: var(--rose); color: var(--rose); }
+  .tab-btn.active { background: var(--rose); border-color: var(--rose); color: #fff; }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+</style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav>
+  <a class="nav-logo" href="#">🌸 Schwangerschaft</a>
+  <ul class="nav-links">
+    <li><a href="#trimester">Trimester</a></li>
+    <li><a href="#entwicklung">Entwicklung</a></li>
+    <li><a href="#symptome">Symptome</a></li>
+    <li><a href="#ernaehrung">Ernährung</a></li>
+    <li><a href="#vorsorge">Vorsorge</a></li>
+    <li><a href="#geburt">Geburt</a></li>
+    <li><a href="#kliniktasche">Kliniktasche</a></li>
+    <li><a href="#mental">Psyche</a></li>
+    <li><a href="#partner">Partner</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menü öffnen" onclick="toggleMobileNav()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Nav Drawer -->
+<div class="nav-drawer" id="navDrawer">
+  <a href="#trimester" onclick="closeMobileNav()">Trimester</a>
+  <a href="#entwicklung" onclick="closeMobileNav()">Entwicklung</a>
+  <a href="#symptome" onclick="closeMobileNav()">Symptome</a>
+  <a href="#ernaehrung" onclick="closeMobileNav()">Ernährung</a>
+  <a href="#vorsorge" onclick="closeMobileNav()">Vorsorge</a>
+  <a href="#geburt" onclick="closeMobileNav()">Geburt</a>
+  <a href="#kliniktasche" onclick="closeMobileNav()">Kliniktasche</a>
+  <a href="#mental" onclick="closeMobileNav()">Psyche</a>
+  <a href="#partner" onclick="closeMobileNav()">Partner</a>
+  <a href="#rechner" onclick="closeMobileNav()">Terminrechner</a>
+  <a href="#faq" onclick="closeMobileNav()">FAQ</a>
+</div>
+
+<!-- ── HERO ── -->
+<header class="hero">
+  <div class="hero-badge">🌱 Dein umfassender Begleiter</div>
+  <h1>Das Wunder der<br><em>Schwangerschaft</em></h1>
+  <p class="hero-sub">Von den ersten Wochen bis zur Geburt — alles, was du wissen musst. Verlässliche Informationen, liebevoll aufbereitet.</p>
+  <div class="hero-cta">
+    <a href="#trimester" class="btn btn-primary">Jetzt erkunden</a>
+    <a href="#rechner" class="btn btn-outline">Geburtstermin berechnen</a>
+  </div>
+</header>
+
+<!-- ── STATS BAND ── -->
+<div class="stats">
+  <div>
+    <div class="stat-num">40</div>
+    <div class="stat-label">Schwangerschaftswochen</div>
+  </div>
+  <div>
+    <div class="stat-num">3</div>
+    <div class="stat-label">Trimester</div>
+  </div>
+  <div>
+    <div class="stat-num">3.400g</div>
+    <div class="stat-label">Geburtsgewicht ca.</div>
+  </div>
+  <div>
+    <div class="stat-num">50cm</div>
+    <div class="stat-label">Babygröße bei Geburt ca.</div>
+  </div>
+  <div>
+    <div class="stat-num">10+</div>
+    <div class="stat-label">Vorsorgeuntersuchungen</div>
+  </div>
+</div>
+
+
+<!-- ── SECTION: TRIMESTER OVERVIEW ── -->
+<section id="trimester">
+  <div class="container">
+    <span class="section-label">Überblick</span>
+    <h2 class="section-title reveal">Die drei Trimester der<br>Schwangerschaft</h2>
+    <p class="section-intro reveal">Eine Schwangerschaft dauert durchschnittlich 40 Wochen (280 Tage), gerechnet vom ersten Tag der letzten Menstruation. Sie ist in drei Trimester unterteilt, die jeweils unterschiedliche Entwicklungsschritte deines Babys und Veränderungen deines Körpers mit sich bringen.</p>
+
+    <div class="info-box reveal">
+      <strong>Wie wird das Schwangerschaftsalter berechnet?</strong>
+      Das Schwangerschaftsalter wird in Schwangerschaftswochen (SSW) angegeben. Es beginnt offiziell mit dem ersten Tag der letzten Menstruation, obwohl die Befruchtung erst ca. 2 Wochen später stattfindet. Das Rechnen ab letzter Regelblutung (p.m. = post menstruationem) ist der internationale Standard.
+    </div>
+
+    <div class="trimester-grid">
+      <div class="trimester-card t1 reveal">
+        <div class="trimester-number">01</div>
+        <div class="trimester-title">Erstes Trimester</div>
+        <div class="trimester-weeks">SSW 1 – 13 (Monat 1–3)</div>
+        <p>Die Zeit der größten Veränderungen. Aus einer befruchteten Eizelle werden alle grundlegenden Organe und Körperstrukturen angelegt. Viele Frauen wissen noch nicht, dass sie schwanger sind.</p>
+        <ul class="milestone-list">
+          <li>Embryonale Phase: Alle Organe werden angelegt</li>
+          <li>Herzschlag ab ca. SSW 6 nachweisbar</li>
+          <li>Hände und Füße bilden sich heraus</li>
+          <li>Gehirn und Nervensystem entwickeln sich rapide</li>
+          <li>Gesichtszüge werden erkennbar</li>
+          <li>Größe am Ende: ca. 7–8 cm, 20–25 g</li>
+          <li>Risiko einer Fehlgeburt am höchsten</li>
+          <li>Übelkeit und Müdigkeit sind häufig</li>
+        </ul>
+      </div>
+
+      <div class="trimester-card t2 reveal">
+        <div class="trimester-number">02</div>
+        <div class="trimester-title">Zweites Trimester</div>
+        <div class="trimester-weeks">SSW 14 – 27 (Monat 4–6)</div>
+        <p>Für viele Frauen die angenehmste Phase. Übelkeit lässt nach, der Bauch wächst sichtbar und die ersten Kindsbewegungen werden spürbar – ein unvergessliches Erlebnis.</p>
+        <ul class="milestone-list">
+          <li>Baby bewegt sich, tritt und dreht sich</li>
+          <li>Geschlecht kann per Ultraschall erkannt werden</li>
+          <li>Haare, Augenbrauen und Wimpern wachsen</li>
+          <li>Fingerabdrücke bilden sich</li>
+          <li>Baby schluckt Fruchtwasser</li>
+          <li>Größe am Ende: ca. 35 cm, 900 g</li>
+          <li>Erste Kindsbewegungen ca. in SSW 18–22</li>
+          <li>Mutterkuchen ist voll entwickelt</li>
+        </ul>
+      </div>
+
+      <div class="trimester-card t3 reveal">
+        <div class="trimester-number">03</div>
+        <div class="trimester-title">Drittes Trimester</div>
+        <div class="trimester-weeks">SSW 28 – 40 (Monat 7–9)</div>
+        <p>Die Endphase: Das Baby legt stark an Gewicht zu und bereitet sich auf die Geburt vor. Der Bauch wird groß, Schlaf wird schwieriger und die Aufregung steigt.</p>
+        <ul class="milestone-list">
+          <li>Massives Wachstum und Gewichtszunahme</li>
+          <li>Lungen reifen (für Atemfunktion nach Geburt)</li>
+          <li>Baby dreht sich in Kopflage</li>
+          <li>Gehirn entwickelt sich weiterhin stark</li>
+          <li>Baby kann Licht und Geräusche wahrnehmen</li>
+          <li>Größe am Ende: ca. 50 cm, 3.200–3.500 g</li>
+          <li>Braxton-Hicks-Wehen (Übungswehen) möglich</li>
+          <li>Nesting-Instinkt: Drang, alles vorzubereiten</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── SECTION: WÖCHENTLICHE ENTWICKLUNG ── -->
+<section id="entwicklung">
+  <div class="container">
+    <span class="section-label">Woche für Woche</span>
+    <h2 class="section-title reveal">Entwicklung deines Babys</h2>
+    <p class="section-intro reveal">Jede Woche bringt neue Wunder. Erfahre, was in deinem Körper und beim Baby passiert – von der Befruchtung bis zur Geburt.</p>
+
+    <div class="tabs reveal">
+      <button class="tab-btn active" onclick="showTab('tab-t1', this)">1. Trimester</button>
+      <button class="tab-btn" onclick="showTab('tab-t2', this)">2. Trimester</button>
+      <button class="tab-btn" onclick="showTab('tab-t3', this)">3. Trimester</button>
+    </div>
+
+    <div class="tab-content active" id="tab-t1">
+      <div class="week-accordion">
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)">
+            <div class="week-header-left">
+              <div class="week-badge">1–2</div>
+              <div>
+                <h3>SSW 1–2: Beginn & Ovulation</h3>
+                <p>Eisprung und Befruchtung</p>
+              </div>
+            </div>
+            <span class="week-arrow">▾</span>
+          </div>
+          <div class="week-body">
+            <p>Technisch gesehen ist die Frau in SSW 1–2 noch gar nicht schwanger. Der Körper bereitet sich auf den Eisprung vor. Die Gebärmutterschleimhaut wird aufgebaut. In SSW 2 findet der Eisprung statt, die Eizelle wird freigegeben und kann befruchtet werden.</p>
+            <p><strong>Was passiert:</strong></p>
+            <ul>
+              <li>Gebärmutterschleimhaut baut sich auf</li>
+              <li>Follikelreifung im Eierstock</li>
+              <li>Eisprung ca. Tag 14 des Zyklus</li>
+              <li>Befruchtung im Eileiter möglich</li>
+            </ul>
+          </div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)">
+            <div class="week-header-left">
+              <div class="week-badge">3–4</div>
+              <div>
+                <h3>SSW 3–4: Einnistung</h3>
+                <p>Größe: ca. 0,2 mm (Blastozyste)</p>
+              </div>
+            </div>
+            <span class="week-arrow">▾</span>
+          </div>
+          <div class="week-body">
+            <p>Die befruchtete Eizelle (Zygote) teilt sich auf dem Weg zur Gebärmutter mehrfach. Als Blastozyste nistet sie sich in die Gebärmutterschleimhaut ein (Nidation). Das Hormon hCG wird produziert und verhindert die nächste Menstruation.</p>
+            <ul>
+              <li>Zellenteilung beginnt sofort</li>
+              <li>Einnistung in die Gebärmutter</li>
+              <li>hCG-Produktion (Schwangerschaftshormon)</li>
+              <li>Erste Schicht: Amnion & Chorion entstehen</li>
+            </ul>
+          </div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)">
+            <div class="week-header-left">
+              <div class="week-badge">5–6</div>
+              <div>
+                <h3>SSW 5–6: Embryo & Herzschlag</h3>
+                <p>Größe: ca. 3–6 mm</p>
+              </div>
+            </div>
+            <span class="week-arrow">▾</span>
+          </div>
+          <div class="week-body">
+            <p>Der Embryo entwickelt die drei Keimblätter (Ektoderm, Mesoderm, Endoderm). Das primitive Herz beginnt zu schlagen – einer der aufregendsten Momente der Schwangerschaft! Erste Ultraschalluntersuchung möglich.</p>
+            <ul>
+              <li>Herzschlag ab SSW 6 nachweisbar</li>
+              <li>Neuralrohr (Vorläufer des Gehirns) schließt sich</li>
+              <li>Arm- und Beinknospen erscheinen</li>
+              <li>Leber und Pankreas beginnen sich zu bilden</li>
+            </ul>
+          </div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)">
+            <div class="week-header-left">
+              <div class="week-badge">7–8</div>
+              <div>
+                <h3>SSW 7–8: Gesichtszüge formen sich</h3>
+                <p>Größe: ca. 1–1,6 cm, 1 g</p>
+              </div>
+            </div>
+            <span class="week-arrow">▾</span>
+          </div>
+          <div class="week-body">
+            <p>Die Gesichtszüge des Embryos nehmen Gestalt an: Augen, Ohren, Nase und Mund entwickeln sich. Die Gliedmaßen werden länger und es sind bereits Ellenbogen erkennbar. Das Gehirn wächst rasend schnell.</p>
+            <ul>
+              <li>Augen wandern von Seiten zur Vorderseite</li>
+              <li>Nasenspitze & Lippen erkennbar</li>
+              <li>Finger- und Zehenanlagen sichtbar</li>
+              <li>Alle wichtigen Organe in Entwicklung</li>
+            </ul>
+          </div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)">
+            <div class="week-header-left">
+              <div class="week-badge">9–10</div>
+              <div>
+                <h3>SSW 9–10: Vom Embryo zum Fötus</h3>
+                <p>Größe: ca. 2,5–3,2 cm, 4 g</p>
+              </div>
+            </div>
+            <span class="week-arrow">▾</span>
+          </div>
+          <div class="week-body">
+            <p>Ab SSW 9 wird das Baby offiziell als Fötus bezeichnet – alle grundlegenden Organe sind angelegt. Das Baby macht erste Bewegungen, die aber noch nicht spürbar sind. Zähne und Knochenstruktur beginnen sich zu bilden.</p>
+            <ul>
+              <li>Übergang von Embryo zu Fötus</li>
+              <li>Erste spontane Bewegungen</li>
+              <li>Genitalen in Entwicklung (Geschlecht noch nicht erkennbar)</li>
+              <li>Babynabelschnur wird länger</li>
+            </ul>
+          </div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)">
+            <div class="week-header-left">
+              <div class="week-badge">11–12</div>
+              <div>
+                <h3>SSW 11–12: Alles ist da</h3>
+                <p>Größe: ca. 5–6 cm, 8–14 g</p>
+              </div>
+            </div>
+            <span class="week-arrow">▾</span>
+          </div>
+          <div class="week-body">
+            <p>Das erste Trimester-Screening findet statt (Nackenfalten-Messung + Bluttest). Alle Organe sind angelegt, nun geht es ums Wachsen und Reifen. Finger- und Zehennägel wachsen. Das Baby kann schlucken und hat einen Saugreflex.</p>
+            <ul>
+              <li>Ersttrimester-Screening möglich</li>
+              <li>Fingernägel wachsen</li>
+              <li>Saugreflex vorhanden</li>
+              <li>Nieren funktionieren – Baby schluckt Fruchtwasser</li>
+            </ul>
+          </div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)">
+            <div class="week-header-left">
+              <div class="week-badge">13</div>
+              <div>
+                <h3>SSW 13: Ende des 1. Trimesters</h3>
+                <p>Größe: ca. 7–8 cm, 23 g</p>
+              </div>
+            </div>
+            <span class="week-arrow">▾</span>
+          </div>
+          <div class="week-body">
+            <p>Mit Ende der 13. Woche sinkt das Fehlgeburtsrisiko deutlich. Die Plazenta übernimmt vollständig die Versorgung des Babys. Das Risiko für Chromosomenanomalien kann durch das Ersttrimester-Screening eingeschätzt werden.</p>
+            <ul>
+              <li>Fehlgeburtsrisiko sinkt auf unter 1%</li>
+              <li>Plazenta übernimmt Hormonproduktion</li>
+              <li>Mutterkuchen voll entwickelt</li>
+              <li>Übelkeit lässt oft nach</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-t2">
+      <div class="week-accordion">
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)">
+            <div class="week-header-left">
+              <div class="week-badge sage">14–16</div>
+              <div>
+                <h3>SSW 14–16: Aktives Baby</h3>
+                <p>Größe: ca. 10–12 cm, 100 g</p>
+              </div>
+            </div>
+            <span class="week-arrow">▾</span>
+          </div>
+          <div class="week-body">
+            <p>Das Baby bewegt sich immer aktiver, auch wenn die Mutter es noch nicht spürt. Das Geschlecht ist per Ultraschall erkennbar. Lanugo (feines Flaumhaar) bedeckt den Körper und schützt die Haut. Der zweite Ultraschall steht an.</p>
+            <ul>
+              <li>Geschlecht per Ultraschall erkennbar</li>
+              <li>Lanugo-Flaumhaar bedeckt Körper</li>
+              <li>Baby greift nach Nabelschnur</li>
+              <li>Knochen werden stabiler (Kalzifizierung)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)">
+            <div class="week-header-left">
+              <div class="week-badge sage">17–20</div>
+              <div>
+                <h3>SSW 17–20: Erste Bewegungen spürbar!</h3>
+                <p>Größe: ca. 16–25 cm, 200–300 g</p>
+              </div>
+            </div>
+            <span class="week-arrow">▾</span>
+          </div>
+          <div class="week-body">
+            <p>Zwischen SSW 18 und 22 spüren Erstgebärende die ersten Kindsbewegungen – wie Schmetterlinge im Bauch oder zartes Kribbeln. Mehrgebärende spüren es oft schon früher. Der große Organscreening-Ultraschall findet statt.</p>
+            <ul>
+              <li>Erste Kindsbewegungen (Erstgebärende SSW 18–22)</li>
+              <li>Großer Organscreening-Ultraschall (SSW 18–22)</li>
+              <li>Baby hört Muttersprache und Herzschlag</li>
+              <li>Fingerabdrücke sind vollständig geformt</li>
+            </ul>
+          </div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)">
+            <div class="week-header-left">
+              <div class="week-badge sage">21–24</div>
+              <div>
+                <h3>SSW 21–24: Überleben außerhalb möglich</h3>
+                <p>Größe: ca. 25–30 cm, 500–600 g</p>
+              </div>
+            </div>
+            <span class="week-arrow">▾</span>
+          </div>
+          <div class="week-body">
+            <p>Ab SSW 24 gilt das Baby als "lebensfähig" – mit intensivmedizinischer Betreuung besteht eine Überlebenschance. Die Lungen beginnen Surfactant zu produzieren. Das Baby hat einen geregelten Schlaf-Wach-Rhythmus.</p>
+            <ul>
+              <li>Grenze der Lebensfähigkeit ab SSW 24</li>
+              <li>Lungenbläschen bilden sich</li>
+              <li>Baby reagiert auf Licht und Geräusche</li>
+              <li>Schlaf-Wach-Rhythmus entwickelt sich</li>
+            </ul>
+          </div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)">
+            <div class="week-header-left">
+              <div class="week-badge sage">25–27</div>
+              <div>
+                <h3>SSW 25–27: Ende 2. Trimester</h3>
+                <p>Größe: ca. 35 cm, 800–900 g</p>
+              </div>
+            </div>
+            <span class="week-arrow">▾</span>
+          </div>
+          <div class="week-body">
+            <p>Das Gehirn entwickelt sich enorm: Windungen und Furchen entstehen. Das Baby kann blinzeln, seine Augen bewegen sich. Wachstumsschübe werden für die Mutter deutlich spürbar – manchmal sogar sichtbar von außen.</p>
+            <ul>
+              <li>Gehirn entwickelt Windungen und Furchen</li>
+              <li>Baby kann blinzeln und Augen öffnen</li>
+              <li>Ständige kräftige Bewegungen</li>
+              <li>Körper wird runder durch Fettaufbau</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-t3">
+      <div class="week-accordion">
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)">
+            <div class="week-header-left">
+              <div class="week-badge purple">28–31</div>
+              <div>
+                <h3>SSW 28–31: Gehirn wächst explosiv</h3>
+                <p>Größe: ca. 37–41 cm, 1000–1600 g</p>
+              </div>
+            </div>
+            <span class="week-arrow">▾</span>
+          </div>
+          <div class="week-body">
+            <p>Das Gehirn wächst in diesem Abschnitt besonders schnell. Das Baby lernt zu träumen (REM-Schlaf beobachtbar). Es trinkt täglich bis zu 500 ml Fruchtwasser. Der Glukosetest auf Schwangerschaftsdiabetes wird durchgeführt.</p>
+            <ul>
+              <li>Gehirn nimmt charakteristische Form an</li>
+              <li>REM-Schlaf (Träumen) nachweisbar</li>
+              <li>Glucosetoleranztest für Schwangerschaftsdiabetes</li>
+              <li>Baby dreht sich oft noch Richtung Kopflage</li>
+            </ul>
+          </div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)">
+            <div class="week-header-left">
+              <div class="week-badge purple">32–35</div>
+              <div>
+                <h3>SSW 32–35: Reifung & Fettzunahme</h3>
+                <p>Größe: ca. 43–46 cm, 1700–2500 g</p>
+              </div>
+            </div>
+            <span class="week-arrow">▾</span>
+          </div>
+          <div class="week-body">
+            <p>Das Baby legt täglich ca. 200–250 g zu. Die Lungen reifen weiter. Das Immunsystem bekommt Antikörper von der Mutter. Ein Frühgeborenes in SSW 34+ hat sehr gute Überlebenschancen.</p>
+            <ul>
+              <li>Etwa 14 g Fett pro Tag werden aufgebaut</li>
+              <li>Lungen nahezu ausgereift ab SSW 34</li>
+              <li>Mutter überträgt Antikörper</li>
+              <li>Bewegungen werden ruhiger, aber kräftiger</li>
+            </ul>
+          </div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)">
+            <div class="week-header-left">
+              <div class="week-badge purple">36–38</div>
+              <div>
+                <h3>SSW 36–38: Fast bereit</h3>
+                <p>Größe: ca. 47–49 cm, 2600–3200 g</p>
+              </div>
+            </div>
+            <span class="week-arrow">▾</span>
+          </div>
+          <div class="week-body">
+            <p>Das Baby ist ab SSW 37 als reif ("term") eingestuft. Lanugo verschwindet, Vernix (Käseschmiere) schützt die Haut. Der Kopf tritt ins Becken ein (Senkung) – die Mutter kann wieder tiefer atmen. Übungswehen (Braxton-Hicks) nehmen zu.</p>
+            <ul>
+              <li>Ab SSW 37 gilt Baby als reif</li>
+              <li>Lanugo-Haare fallen größtenteils ab</li>
+              <li>Kopf tritt ins Becken (Senkung)</li>
+              <li>Braxton-Hicks-Wehen häufiger</li>
+            </ul>
+          </div>
+        </div>
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)">
+            <div class="week-header-left">
+              <div class="week-badge purple">39–40</div>
+              <div>
+                <h3>SSW 39–40: Bereit für die Welt</h3>
+                <p>Größe: ca. 50–52 cm, 3200–3600 g</p>
+              </div>
+            </div>
+            <span class="week-arrow">▾</span>
+          </div>
+          <div class="week-body">
+            <p>Das Baby ist vollständig entwickelt und wartet auf sein Signal zum Kommen. Nur ca. 5% der Babys kommen exakt am errechneten Termin. Ein Spielraum von ±2 Wochen ist vollkommen normal.</p>
+            <ul>
+              <li>Vollständig entwickelt & bereit zur Geburt</li>
+              <li>Nur 5% kommen am errechneten Termin</li>
+              <li>Fruchtwassermenge nimmt leicht ab</li>
+              <li>Mutter: Druck im Becken, häufiger Harndrang</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── SECTION: SYMPTOME ── -->
+<section id="symptome">
+  <div class="container">
+    <span class="section-label">Körperliche Veränderungen</span>
+    <h2 class="section-title reveal">Schwangerschaftssymptome</h2>
+    <p class="section-intro reveal">Schwangerschaft ist intensiv – dein Körper durchläuft enorme Veränderungen. Hier findest du eine Übersicht der häufigsten Symptome und hilfreiche Tipps.</p>
+
+    <div class="warning-box reveal">
+      <strong>⚠ Wann sofort zum Arzt?</strong>
+      Starke Blutungen, anhaltende heftige Bauchschmerzen, starke Kopfschmerzen mit Sehstörungen, plötzliche Schwellungen an Händen/Gesicht, Fieber über 38,5°C, nachlassende Kindsbewegungen nach SSW 28 oder Fruchtwasserabgang erfordern sofortige ärztliche Hilfe.
+    </div>
+
+    <div class="symptoms-grid">
+      <div class="symptom-card reveal">
+        <div class="symptom-icon">🤢</div>
+        <h3>Übelkeit & Erbrechen</h3>
+        <p>Betrifft bis zu 80% aller Schwangeren. Am stärksten in SSW 6–12. Tipp: Kleine, häufige Mahlzeiten, Ingwertee, Salzstangen nüchtern essen. Bei schwerem Verlauf (Hyperemesis gravidarum) bitte ärztliche Hilfe suchen.</p>
+        <div class="severity-bar"><div class="severity-fill" style="width:85%"></div></div>
+        <span class="severity-label">Häufigkeit: sehr häufig</span>
+      </div>
+      <div class="symptom-card reveal">
+        <div class="symptom-icon">😴</div>
+        <h3>Müdigkeit & Erschöpfung</h3>
+        <p>Besonders im 1. und 3. Trimester. Dein Körper arbeitet auf Hochtouren. Gib dir Erlaubnis zu ruhen! Kurze Mittagsschläfchen helfen. Im 2. Trimester normalisiert sich das Energielevel oft.</p>
+        <div class="severity-bar"><div class="severity-fill" style="width:90%"></div></div>
+        <span class="severity-label">Häufigkeit: sehr häufig</span>
+      </div>
+      <div class="symptom-card reveal">
+        <div class="symptom-icon">🤱</div>
+        <h3>Brustveränderungen</h3>
+        <p>Spannungsgefühl, Empfindlichkeit und Größenzunahme der Brust – eines der ersten Anzeichen einer Schwangerschaft. Gut sitzende BHs ohne Bügel helfen. Später produziert die Brust Kolostrum (Vormilch).</p>
+        <div class="severity-bar"><div class="severity-fill" style="width:80%"></div></div>
+        <span class="severity-label">Häufigkeit: sehr häufig</span>
+      </div>
+      <div class="symptom-card reveal">
+        <div class="symptom-icon">🚽</div>
+        <h3>Häufiger Harndrang</h3>
+        <p>Durch Hormone und wachsende Gebärmutter nimmt der Druck auf die Blase zu. Besonders zu Beginn und am Ende der Schwangerschaft. Trink trotzdem ausreichend! Nur abends etwas weniger.</p>
+        <div class="severity-bar"><div class="severity-fill" style="width:70%"></div></div>
+        <span class="severity-label">Häufigkeit: häufig</span>
+      </div>
+      <div class="symptom-card reveal">
+        <div class="symptom-icon">🔥</div>
+        <h3>Sodbrennen & Reflux</h3>
+        <p>Hormonal bedingte Entspannung des Mageneingangs und Druck der Gebärmutter führen zu Reflux. Besonders im 3. Trimester. Kleine Mahlzeiten, nach dem Essen nicht gleich hinlegen, Kopfteil des Bettes erhöhen.</p>
+        <div class="severity-bar"><div class="severity-fill" style="width:65%"></div></div>
+        <span class="severity-label">Häufigkeit: häufig</span>
+      </div>
+      <div class="symptom-card reveal">
+        <div class="symptom-icon">🦵</div>
+        <h3>Rückenschmerzen</h3>
+        <p>Der Schwerpunkt verlagert sich durch den wachsenden Bauch. Beckengürtelschmerzen und Ischiasschmerzen sind möglich. Schwangerschaftsgymnastik, Yoga, Physiotherapie und ein Schwangerschaftskissen helfen.</p>
+        <div class="severity-bar"><div class="severity-fill" style="width:75%"></div></div>
+        <span class="severity-label">Häufigkeit: häufig</span>
+      </div>
+      <div class="symptom-card reveal">
+        <div class="symptom-icon">💧</div>
+        <h3>Wassereinlagerungen (Ödeme)</h3>
+        <p>Leichte Schwellungen an Füßen und Knöcheln sind normal, besonders abends. Regelmäßige Bewegung, Beine hochlegen, Kompressionsstrümpfe und ausreichend Trinken helfen. Plötzliche starke Schwellungen immer abklären!</p>
+        <div class="severity-bar"><div class="severity-fill" style="width:60%"></div></div>
+        <span class="severity-label">Häufigkeit: häufig</span>
+      </div>
+      <div class="symptom-card reveal">
+        <div class="symptom-icon">🌪️</div>
+        <h3>Schwindel & Kreislaufprobleme</h3>
+        <p>Der Blutdruck sinkt im 1. und 2. Trimester oft ab. Langsam aufstehen, viel trinken, kleine Mahlzeiten. Vena-Cava-Syndrom vermeiden: Ab dem 4. Monat nicht flach auf dem Rücken liegen.</p>
+        <div class="severity-bar"><div class="severity-fill" style="width:50%"></div></div>
+        <span class="severity-label">Häufigkeit: gelegentlich</span>
+      </div>
+      <div class="symptom-card reveal">
+        <div class="symptom-icon">🧠</div>
+        <h3>"Baby Brain" & Vergesslichkeit</h3>
+        <p>Viele Schwangere berichten über Vergesslichkeit und Konzentrationsprobleme. Wissenschaftlich ist dies auf Gehirnveränderungen zurückzuführen, die die soziale Bindung stärken. Nutze Notizen und Kalender.</p>
+        <div class="severity-bar"><div class="severity-fill" style="width:55%"></div></div>
+        <span class="severity-label">Häufigkeit: häufig</span>
+      </div>
+      <div class="symptom-card reveal">
+        <div class="symptom-icon">🌿</div>
+        <h3>Verstopfung</h3>
+        <p>Progesteron verlangsamt die Darmtätigkeit. Ballaststoffreiche Ernährung, viel Trinken (mind. 2–2,5 l täglich) und Bewegung helfen. Keine Abführmittel ohne ärztliche Rücksprache nehmen.</p>
+        <div class="severity-bar"><div class="severity-fill" style="width:60%"></div></div>
+        <span class="severity-label">Häufigkeit: häufig</span>
+      </div>
+      <div class="symptom-card reveal">
+        <div class="symptom-icon">🎭</div>
+        <h3>Stimmungsschwankungen</h3>
+        <p>Hormonelle Veränderungen können zu Stimmungsschwankungen führen – von Glücksgefühlen bis zu Weinkrämpfen ohne klaren Grund. Das ist normal. Offen kommunizieren, Unterstützung suchen, sich Zeit für sich nehmen.</p>
+        <div class="severity-bar"><div class="severity-fill" style="width:70%"></div></div>
+        <span class="severity-label">Häufigkeit: häufig</span>
+      </div>
+      <div class="symptom-card reveal">
+        <div class="symptom-icon">👃</div>
+        <h3>Verstärkte Geruchswahrnehmung</h3>
+        <p>Viele Schwangere reagieren extrem empfindlich auf Gerüche – oft ein Auslöser für Übelkeit. Dieses Phänomen ist evolutionär: Es soll vor verdorbenem Essen und Giftstoffen schützen.</p>
+        <div class="severity-bar"><div class="severity-fill" style="width:65%"></div></div>
+        <span class="severity-label">Häufigkeit: häufig</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── SECTION: ERNÄHRUNG ── -->
+<section id="ernaehrung">
+  <div class="container">
+    <span class="section-label">Gesund essen</span>
+    <h2 class="section-title reveal">Ernährung in der Schwangerschaft</h2>
+    <p class="section-intro reveal">Du isst nicht "für zwei", aber du isst qualitativ hochwertig für zwei. Eine ausgewogene Ernährung ist eine der wichtigsten Grundlagen für die Gesundheit deines Babys.</p>
+
+    <div class="info-box reveal">
+      <strong>💡 Wichtig: Mehrbedarf an Kalorien</strong>
+      Im 1. Trimester: kein erhöhter Kalorienbedarf. Im 2. Trimester: ca. +250–300 kcal täglich. Im 3. Trimester: ca. +500 kcal täglich. Wichtiger als Menge ist die Qualität der Nahrung.
+    </div>
+
+    <h3 class="sub-heading reveal">Wichtige Nährstoffe & Supplements</h3>
+    <div class="nutrition-grid">
+      <div class="nutrition-card reveal">
+        <h3>🧠 Folsäure</h3>
+        <div class="sub">400–800 µg täglich · Ab Kinderwunsch bis SSW 12</div>
+        <ul>
+          <li>Warum wichtig <span>Neuralrohrdefekte verhindern</span></li>
+          <li>Supplement <span>Empfohlen</span></li>
+          <li>Nahrungsquellen <span>Hülsenfrüchte, Spinat</span></li>
+          <li>Beginn <span>Vor der Schwangerschaft!</span></li>
+        </ul>
+      </div>
+      <div class="nutrition-card reveal">
+        <h3>☀️ Vitamin D</h3>
+        <div class="sub">1000–2000 IE täglich · Gesamte Schwangerschaft</div>
+        <ul>
+          <li>Warum wichtig <span>Knochen, Immunsystem</span></li>
+          <li>Supplement <span>Oft empfohlen</span></li>
+          <li>Nahrungsquellen <span>Fettfisch, Eier</span></li>
+          <li>Spiegel prüfen <span>Bluttest beim Arzt</span></li>
+        </ul>
+      </div>
+      <div class="nutrition-card reveal">
+        <h3>🐟 Jod</h3>
+        <div class="sub">200–250 µg täglich · Gesamte Schwangerschaft</div>
+        <ul>
+          <li>Warum wichtig <span>Schilddrüse, Gehirnentwicklung</span></li>
+          <li>Supplement <span>Empfohlen</span></li>
+          <li>Nahrungsquellen <span>Meeresfisch, jodiertes Salz</span></li>
+          <li>Achtung <span>Seetang vermeiden</span></li>
+        </ul>
+      </div>
+      <div class="nutrition-card reveal">
+        <h3>🩸 Eisen</h3>
+        <div class="sub">30 mg täglich · Ab 2. Trimester prüfen</div>
+        <ul>
+          <li>Warum wichtig <span>Blutbildung, Sauerstofftransport</span></li>
+          <li>Supplement <span>Nur bei Mangel</span></li>
+          <li>Nahrungsquellen <span>Rotes Fleisch, Hülsenfrüchte</span></li>
+          <li>Tipp <span>Mit Vitamin C kombinieren</span></li>
+        </ul>
+      </div>
+      <div class="nutrition-card reveal">
+        <h3>🥛 Kalzium</h3>
+        <div class="sub">1000 mg täglich</div>
+        <ul>
+          <li>Warum wichtig <span>Knochen & Zähne des Babys</span></li>
+          <li>Supplement <span>Selten nötig</span></li>
+          <li>Nahrungsquellen <span>Milchprodukte, Brokkoli</span></li>
+          <li>Achtung <span>Nicht zusammen mit Eisen nehmen</span></li>
+        </ul>
+      </div>
+      <div class="nutrition-card reveal">
+        <h3>🐠 Omega-3 / DHA</h3>
+        <div class="sub">200–300 mg DHA täglich</div>
+        <ul>
+          <li>Warum wichtig <span>Gehirn & Augenentwicklung</span></li>
+          <li>Supplement <span>Empfohlen, bes. bei wenig Fisch</span></li>
+          <li>Nahrungsquellen <span>Lachs, Hering, Makrele</span></li>
+          <li>Vegane Option <span>Algenöl</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="warning-box reveal" style="margin-top:3rem">
+      <strong>🚫 Diese Lebensmittel unbedingt meiden:</strong>
+      Rohe/nicht durchgegarte Fleischprodukte (Tartar, Salami, Mett) — Listerien & Toxoplasmose-Risiko. Roher Fisch & Sushi — Parasiten und Quecksilber. Rohe Eier (Tiramisu, Mousse au Chocolat). Rohe Milch und Rohmilchkäse (Weichkäse, Schimmelkäse). Mehr als 200 mg Koffein täglich (ca. 1–2 Tassen Kaffee). Alkohol — es gibt keine nachweislich sichere Menge. Leberwurst und -pastete — sehr hoher Vitamin-A-Gehalt (teratogen).
+    </div>
+
+    <div class="success-box reveal">
+      <strong>✅ Diese Lebensmittel sind besonders wertvoll:</strong>
+      Hülsenfrüchte (Folsäure, Eisen, Ballaststoffe) · Grünes Blattgemüse (Folsäure, Kalzium, Eisen) · Vollkornprodukte (Ballaststoffe, B-Vitamine) · Fettarme Milchprodukte (Kalzium, Jod, Protein) · Nüsse und Samen (Omega-3, Vitamin E, Magnesium) · Beeren (Antioxidantien, Vitamin C) · Hühnerei (Cholin, Protein) · Lachs und Forelle (DHA, Vitamin D)
+    </div>
+  </div>
+</section>
+
+
+<!-- ── SECTION: VORSORGE ── -->
+<section id="vorsorge">
+  <div class="container">
+    <span class="section-label">Mutterpass & Untersuchungen</span>
+    <h2 class="section-title reveal">Vorsorgeuntersuchungen im Überblick</h2>
+    <p class="section-intro reveal">In Deutschland werden laut Mutterschafts-Richtlinien regulär 10 Vorsorgeuntersuchungen während der Schwangerschaft empfohlen – weitere optionale Untersuchungen kommen hinzu.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:3rem" class="reveal">
+      <div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-week">SSW 5–8</div>
+            <h3>1. Vorsorge: Erste Untersuchung</h3>
+            <p>Bestätigung der Schwangerschaft, Blutentnahme (Blutbild, Blutgruppe, Röteln-Antikörper, Toxoplasmose, Syphilis, HIV-Test), Vaginaler Ultraschall, Mutterpass wird angelegt, Errechnung des Geburtstermins.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-week">SSW 9–12</div>
+            <h3>2. Vorsorge + optional: ETS</h3>
+            <p>Blutdruck, Urintest, Herzton, Ultraschall. Optional: Ersttrimester-Screening (ETS) – kombinierter Test aus Ultraschall (Nackentransparenz NT) und Bluttest zur Risikoeinschätzung für Chromosomenstörungen (Trisomie 21, 18, 13).</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-week">SSW 13–16</div>
+            <h3>3.–5. Vorsorge: Regelmäßige Kontrollen</h3>
+            <p>Alle 4 Wochen: Blutdruck, Gewicht, Urinuntersuchung, Herzton des Babys (Doppler), Lage des Babys, Fundusstand (Messung der Gebärmutterhöhe). Blutbild-Kontrolle in SSW 16.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-week">SSW 18–22</div>
+            <h3>2. Ultraschall: Großer Organscreening</h3>
+            <p>Der wichtigste Ultraschall der Schwangerschaft! Alle Organe werden auf Fehlbildungen untersucht: Herz, Gehirn, Nieren, Lunge, Wirbelsäule, Extremitäten. Auch Plazenta-Lage und Fruchtwasser werden beurteilt. Geschlecht kann festgestellt werden.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-week">SSW 24–28</div>
+            <h3>Glucosetoleranztest (GTT)</h3>
+            <p>Screening auf Schwangerschaftsdiabetes (Gestationsdiabetes). Zwischen 24. und 28. SSW wird ein 75g-Glucosetoleranztest durchgeführt. Vorher: 50g-Suchtest möglich. Gestationsdiabetes betrifft ca. 4–8% aller Schwangeren.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot sage"></div>
+            <div class="timeline-week sage">SSW 29–32</div>
+            <h3>Engmaschige Kontrollen beginnen</h3>
+            <p>Ab SSW 29 alle 2 Wochen Vorsorge. Blutbild-Kontrolle in SSW 28–32. Ab SSW 30: Überprüfung der Kindslage. Anmeldung in der Geburtsklinik spätestens jetzt! Geburtsvorbereitungskurs beginnen.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot sage"></div>
+            <div class="timeline-week sage">SSW 29–32</div>
+            <h3>3. Ultraschall: Wachstums-Check</h3>
+            <p>Der dritte Pflicht-Ultraschall überprüft Wachstum und Lage des Kindes, Plazenta und Fruchtwasser. Dopplersonographie zur Blutflussmessung wird bei Bedarf durchgeführt.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot sage"></div>
+            <div class="timeline-week sage">SSW 34–36</div>
+            <h3>B-Streptokokken-Test</h3>
+            <p>Ab SSW 35–37: Abstrich auf Gruppe-B-Streptokokken (GBS). Diese Bakterien können beim Neugeborenen zu schweren Infektionen führen. Bei positivem Ergebnis: Antibiotika-Gabe unter der Geburt.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot sage"></div>
+            <div class="timeline-week sage">Ab SSW 37</div>
+            <h3>Wöchentliche Vorsorge</h3>
+            <p>Ab SSW 37 wöchentlich: CTG (Kardiotokographie) zur Überwachung der Herzfrequenz des Kindes und der Wehentätigkeit. Kontrolle des Gebärmutterhalses (Portiobefund). Überprüfung der Kindsbewegungen.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot sage"></div>
+            <div class="timeline-week sage">Ab SSW 41</div>
+            <h3>Übertragung: Intensivierte Überwachung</h3>
+            <p>Ab dem errechneten Termin tägliches CTG. In SSW 41+3 Einleitung empfohlen wenn kein spontaner Wehenbeginn. Spätestens SSW 42 Entbindung notwendig.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box reveal" style="margin-top:3rem">
+      <strong>📋 Optionale / Individuelle Gesundheitsleistungen (IGeL):</strong>
+      Feinultraschall (3D/4D) · Nackentransparenz-Messung (ETS) · NIPT (Nicht-invasiver Pränataltest auf Chromosomenstörungen, z.B. PraenaTest) · Toxoplasmose-Screening · Chlamydien-Abstrich · Präeklampsie-Screening · Frühgeburts-Risiko-Screening (Cervixlänge) · Diese Leistungen werden i.d.R. nicht von der gesetzlichen Krankenkasse übernommen und kosten 50–600 €.
+    </div>
+  </div>
+</section>
+
+
+<!-- ── SECTION: SPORT & BEWEGUNG ── -->
+<section id="sport">
+  <div class="container-narrow">
+    <span class="section-label">Aktiv & Gesund</span>
+    <h2 class="section-title reveal">Sport in der Schwangerschaft</h2>
+    <p class="section-intro reveal">Moderate Bewegung ist in einer unkomplizierten Schwangerschaft nicht nur erlaubt, sondern ausdrücklich empfohlen! Sie verbessert das Wohlbefinden, reduziert Rückenschmerzen und bereitet den Körper auf die Geburt vor.</p>
+
+    <div class="success-box reveal">
+      <strong>✅ Empfohlene Sportarten</strong>
+      Schwimmen und Wassergymnastik · Yoga (Schwangerschaftsyoga) · Pilates (ohne Bauchübungen) · Spazierengehen und leichtes Wandern · Radfahren (stabiles Gelände, nicht zu spät in der SS) · Tanzen (kein Leistungssport) · Aquafitness · Geburtsvorbereitende Übungen (z.B. mit Pezziball)
+    </div>
+
+    <div class="warning-box reveal">
+      <strong>⚠ Diese Sportarten besser meiden</strong>
+      Kampfsport und Kontaktsportarten · Sportarten mit Sturzrisiko (Skifahren, Klettern, Reiten) · Tauchen · Hochintensives Training (HIIT) im 3. Trimester · Sportarten mit plötzlichen Richtungswechseln · Übungen flach auf dem Rücken ab dem 4. Monat (Vena-Cava-Syndrom) · Leistungssport ohne ärztliche Freigabe
+    </div>
+
+    <div class="content-card reveal">
+      <h3 class="sub-heading sm">Beckenboden – der unterschätzte Held</h3>
+      <p>Der Beckenboden trägt das gesamte Gewicht von Baby, Gebärmutter und Fruchtwasser. Gezielte Beckenbodenübungen sind in der Schwangerschaft und nach der Geburt essenziell.</p>
+      <p><strong style="color:var(--text)">Übung (täglich 3× 10 Wiederholungen):</strong> Stelle dir vor, du hältst Urin an. Spanne die Muskeln im Bereich Scheide, Harnröhre und After an, halte 5–10 Sekunden und lasse langsam los. Atme dabei ruhig weiter.</p>
+      <p>Tipp: Besuche einen Beckenbodenphysiotherapeuten, besonders nach der Geburt!</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── SECTION: GEBURT ── -->
+<section id="geburt">
+  <div class="container">
+    <span class="section-label">Der große Tag</span>
+    <h2 class="section-title reveal">Geburtsarten & Geburtsvorbereitung</h2>
+    <p class="section-intro reveal">Kein Geburtsweg ist besser oder schlechter – das Richtige ist, was für dich und dein Baby sicher und passend ist. Informiere dich über alle Möglichkeiten und erstelle einen Geburtsplan.</p>
+
+    <div class="birth-grid">
+      <div class="birth-card reveal">
+        <h3>🌿 Spontangeburt (vaginal)</h3>
+        <p>Die natürlichste Form der Geburt. Das Baby kommt durch den Geburtskanal zur Welt. In drei Phasen: Eröffnungsphase (Gebärmutterhals öffnet sich), Austreibungsphase (aktives Pressen) und Nachgeburtsphase (Plazenta).</p>
+        <p><strong>Dauer:</strong> Erstgebärende: 8–16 Stunden. Mehrgebärende: 4–8 Stunden.</p>
+        <div class="pros-cons">
+          <div class="pros">
+            <h4>Vorteile</h4>
+            <ul>
+              <li>Schnellere Erholung</li>
+              <li>Kürzere Klinikverweildauer</li>
+              <li>Natürliche Darmbesiedlung des Babys</li>
+              <li>Guter Start für Stillen</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <h4>Risiken</h4>
+            <ul>
+              <li>Dammriss möglich</li>
+              <li>Belastung für Beckenboden</li>
+              <li>Schmerzen ohne PDA</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="birth-card reveal">
+        <h3>🏥 Kaiserschnitt (Sectio)</h3>
+        <p>Operativer Eingriff unter Regional- oder Vollnarkose. Unterscheidung: primär (geplant vor Wehenbeginn) und sekundär (Notfall nach begonnener Geburt). Ca. 30% aller Geburten in Deutschland sind Kaiserschnitte.</p>
+        <p><strong>Indikationen:</strong> Beckenendlage, Plazenta praevia, Mehrlingsschwangerschaften, fetale Herztonveränderungen, Wachstumsretardierung.</p>
+        <div class="pros-cons">
+          <div class="pros">
+            <h4>Vorteile</h4>
+            <ul>
+              <li>Planbar (beim Wunsch-KS)</li>
+              <li>Kein Geburtskanal-Trauma</li>
+              <li>Sicher bei Komplikationen</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <h4>Risiken</h4>
+            <ul>
+              <li>Längere Erholung</li>
+              <li>Narbenschmerzen</li>
+              <li>Spätere Schwangerschaften komplizierter</li>
+              <li>Baby kommt nicht durch Kanal</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="birth-card reveal">
+        <h3>💧 Wassergeburt</h3>
+        <p>Die Entbindung in einer Gebärwanne. Das warme Wasser (36–37°C) entspannt Muskeln und mindert die Schmerzwahrnehmung. Wird in vielen Kliniken und Geburtshäusern angeboten. Nicht bei jeder Frau geeignet.</p>
+        <div class="pros-cons">
+          <div class="pros">
+            <h4>Vorteile</h4>
+            <ul>
+              <li>Schmerzreduzierung</li>
+              <li>Entspannung der Muskulatur</li>
+              <li>Geringere Dammrissgefahr</li>
+              <li>Sanfte Umgebung fürs Baby</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <h4>Risiken</h4>
+            <ul>
+              <li>Infektionsrisiko</li>
+              <li>Eingeschränkte Überwachung</li>
+              <li>Nicht bei Risikoschwangerschaft</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="birth-card reveal">
+        <h3>🏡 Hausgeburt</h3>
+        <p>Die Geburt findet im eigenen Zuhause statt, begleitet von einer erfahrenen Hebamme. In Deutschland möglich bei unkomplizierten Schwangerschaften. Die Hebamme bringt alle nötigen Utensilien mit.</p>
+        <div class="pros-cons">
+          <div class="pros">
+            <h4>Vorteile</h4>
+            <ul>
+              <li>Vertraute Umgebung</li>
+              <li>Maximale Selbstbestimmung</li>
+              <li>1:1-Betreuung durch Hebamme</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <h4>Risiken</h4>
+            <ul>
+              <li>Keine medizinische Notfallversorgung direkt</li>
+              <li>Krankenhausverlegung nötig bei Komplikationen</li>
+              <li>Nicht für alle geeignet</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-heading lg reveal">Schmerzmanagement unter der Geburt</h3>
+    <div class="symptoms-grid">
+      <div class="symptom-card reveal">
+        <div class="symptom-icon">💉</div>
+        <h3>Periduralanästhesie (PDA)</h3>
+        <p>Die häufigste medikamentöse Schmerzlinderung. Ein Katheter im Epiduralraum der Wirbelsäule gibt kontinuierlich Schmerzmittel ab. Effektiv, die Mutter bleibt wach und ansprechbar.</p>
+      </div>
+      <div class="symptom-card reveal">
+        <div class="symptom-icon">🌊</div>
+        <h3>TENS & Wärme</h3>
+        <p>Transkutane elektrische Nervenstimulation (TENS) kann Wehen-Schmerzen deutlich reduzieren. Wärmepflaster im Rücken, warme Bäder und Duschen helfen ebenfalls.</p>
+      </div>
+      <div class="symptom-card reveal">
+        <div class="symptom-icon">🧘</div>
+        <h3>Entspannungstechniken</h3>
+        <p>Hypnobirthing, Atemtechniken, progressive Muskelentspannung. Gut vorbereitet geht man entspannter in die Geburt. Geburtsvorbereitungskurse üben diese Techniken.</p>
+      </div>
+      <div class="symptom-card reveal">
+        <div class="symptom-icon">🏋️</div>
+        <h3>Lageänderungen & Hilfsmittel</h3>
+        <p>Pezziball, Geburtshocker, verschiedene Haltungen (Vierfüßler, Knie-Brust-Lage) können Schmerzen mindern und die Geburt beschleunigen. Hebammen kennen viele Tricks.</p>
+      </div>
+    </div>
+
+    <div class="info-box reveal" style="margin-top:2rem">
+      <strong>📝 Geburtsplan erstellen – was reingehört:</strong>
+      Bevorzugte Geburtsposition · Schmerzlinderung (ja/nein PDA, TENS, Wasser) · Dammschnitt (nur wenn nötig, oder offen?) · Begleitperson(en) · Musik/Licht/Atmosphäre · Abnabelung (sofort oder verzögert?) · Hautkontakt nach Geburt (Bonding) · Stillen direkt nach Geburt? · Fotografie/Videoaufnahme · Plazenta (Was soll damit passieren?) · Medikamente für Baby (Vitamin K, Augen-Prophylaxe) – Beachte: Ein Geburtsplan ist ein Wunschdokument, kein Vertrag. Flexibilität ist wichtig!
+    </div>
+  </div>
+</section>
+
+
+<!-- ── SECTION: KLINIKTASCHE ── -->
+<section id="kliniktasche">
+  <div class="container">
+    <span class="section-label">Packliste</span>
+    <h2 class="section-title reveal">Die Kliniktasche</h2>
+    <p class="section-intro reveal">Packe deine Kliniktasche ab SSW 36 fertig. Du weißt nie, wann es losgeht! Klicke die Punkte an, um sie abzuhaken.</p>
+
+    <div class="bag-columns">
+      <div class="bag-col reveal">
+        <h3>📄 Dokumente</h3>
+        <ul>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Mutterpass</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Personalausweis / Reisepass</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Krankenkassenkarte</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Geburtsplan (mehrere Kopien)</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Geburtshilfevertrag der Klinik</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Telefonnummern (Hebamme, Klinik)</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Impfpass (Mutter)</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Anamnesebogen (falls vorhanden)</span></li>
+        </ul>
+      </div>
+      <div class="bag-col reveal">
+        <h3>👕 Kleidung für dich</h3>
+        <ul>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Gebärhemd / bequemes T-Shirt</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Bequeme Stillnachthemden (2–3)</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Bademantel</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Hausschuhe (rutschfest)</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Gemütliche Socken (warm)</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Still-BH (2 Stück)</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Hohe Wochenbett-Unterwäsche</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Kleidung für die Heimfahrt</span></li>
+        </ul>
+      </div>
+      <div class="bag-col reveal">
+        <h3>🧴 Körperpflege</h3>
+        <ul>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Shampoo & Duschgel</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Zahnbürste & Zahnpasta</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Lippenpflege (Lippen trocknen unter Geburt)</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Haargummi / Haarspangen</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Wochenbett-Binden (sehr saugfähig)</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Stilleinlagen</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Brustwarzencreme (z.B. Lanolin)</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Massageöl / Sesamöl (für Dammbereich)</span></li>
+        </ul>
+      </div>
+      <div class="bag-col reveal">
+        <h3>👶 Für das Baby</h3>
+        <ul>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Bodys (Gr. 56 & 62, 3 Stück)</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Strampler / Schlafanzüge (3 Stück)</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Mützchen & Söckchen</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Moltontücher / Mulltücher</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Windeln (Gr. 1/NB, 1 Packung)</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Feuchttücher (parfümfrei)</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Babydecke</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Autositz (im Auto montiert!)</span></li>
+        </ul>
+      </div>
+      <div class="bag-col reveal">
+        <h3>📱 Sonstiges</h3>
+        <ul>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Handy-Ladekabel (lang)</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Kamera (mit geladenem Akku)</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Powerbank</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Kopfhörer & Musik-Playlist</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Snacks & isotonische Getränke</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Trinkflasche</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Pezziball (oder bei Klinik vorhanden?)</span></li>
+          <li onclick="toggleBag(this)"><span class="bag-check"></span><span>Kleingeld (Klinik-Parkplatz, Automat)</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── SECTION: MENTALE GESUNDHEIT ── -->
+<section id="mental">
+  <div class="container">
+    <span class="section-label">Seele & Geist</span>
+    <h2 class="section-title reveal">Mentale Gesundheit in der Schwangerschaft</h2>
+    <p class="section-intro reveal">Schwangerschaft ist nicht nur körperlich intensiv – auch emotional kann diese Zeit sehr bewegend sein. Gefühle wie Angst, Überforderung oder Traurigkeit sind normal und kein Zeichen von Schwäche.</p>
+
+    <div class="mental-grid">
+      <div class="mental-card reveal">
+        <h3>Schwangerschaftsangst</h3>
+        <p>Sorgen um das Baby, die Geburt oder die Zeit danach sind völlig normal. Sprich offen darüber – mit dem Partner, der Hebamme oder dem Arzt. Geburtsvorbereitungskurse helfen, Ängste abzubauen. Bei anhaltenden starken Ängsten: Psychologische Unterstützung suchen.</p>
+      </div>
+      <div class="mental-card reveal">
+        <h3>Pränatale Depression</h3>
+        <p>Ca. 10–15% der Schwangeren entwickeln eine pränatale Depression. Typische Zeichen: anhaltende Traurigkeit, Interessenverlust, Schlafprobleme, Hoffnungslosigkeit. Wichtig: Das ist keine Schwäche und sehr gut behandelbar! Bitte beim Arzt oder Psychologen Hilfe suchen.</p>
+      </div>
+      <div class="mental-card reveal">
+        <h3>Körperbild & Selbstwert</h3>
+        <p>Der sich verändernde Körper kann ein gemischtes Verhältnis zum eigenen Bild erzeugen. Es ist okay, nicht jeden Moment der Schwangerschaft zu lieben. Fokussiere dich auf das Staunen: Dein Körper erschafft Leben. Schwangerschaftsyoga und Selbstfürsorge helfen.</p>
+      </div>
+      <div class="mental-card reveal">
+        <h3>Paarbeziehung & Intimität</h3>
+        <p>Die Schwangerschaft verändert die Paardynamik. Kommuniziere offen über Bedürfnisse. Sex ist in einer unkomplizierten Schwangerschaft i.d.R. sicher bis kurz vor der Geburt. Emotionale Intimität und Zärtlichkeit sind ebenso wichtig.</p>
+      </div>
+      <div class="mental-card reveal">
+        <h3>Wochenbettdepression (postpartal)</h3>
+        <p>Ca. 10–20% der Mütter entwickeln nach der Geburt eine postpartale Depression. Zeichen: anhaltende Traurigkeit, Bonding-Probleme, Gedanken, keine gute Mutter zu sein. Suche sofort Hilfe! Mit Behandlung erholen sich fast alle Frauen vollständig.</p>
+      </div>
+      <div class="mental-card reveal">
+        <h3>Baby Blues vs. Depression</h3>
+        <p>Baby Blues (3.–5. Tag nach Geburt): Vorübergehende Stimmungstäler durch Hormonsturz – betrifft bis zu 80% der Frauen und vergehen meist von selbst. Postpartale Depression: Länger anhaltend, intensiver, braucht professionelle Hilfe. Im Zweifel: immer zum Arzt.</p>
+      </div>
+    </div>
+
+    <div class="success-box reveal" style="margin-top:2.5rem">
+      <strong>🤝 Hilfsangebote:</strong>
+      Hebamme (kostenlos, Hausbesuche möglich) · Gynäkologe/Gynäkologin · Psychologische Psychotherapeuten · Schwangerschaftsberatungsstellen (pro familia, Caritas, AWO) · Telefonseelsorge: 0800 111 0 111 (kostenlos, 24h) · Postpartale Hilfe: www.schatten-und-licht.de · Selbsthilfegruppen für werdende & junge Mütter
+    </div>
+  </div>
+</section>
+
+
+<!-- ── SECTION: PARTNER ── -->
+<section id="partner">
+  <div class="container">
+    <span class="section-label">Gemeinsam durch die Schwangerschaft</span>
+    <h2 class="section-title reveal">Der Partner in der Schwangerschaft</h2>
+    <p class="section-intro reveal">Schwangerschaft ist ein Teamsport. Partner, die aktiv einbezogen sind, erleben eine tiefere Verbindung zu Kind und Partnerin – und das Baby profitiert ebenfalls davon.</p>
+
+    <div class="partner-grid">
+      <div class="partner-card reveal">
+        <h3>🤗 Emotionale Unterstützung</h3>
+        <p>Aktiv zuhören ohne zu bewerten. Stimmungsschwankungen verstehen (Hormone!). Regelmäßig fragen: "Wie geht es dir wirklich?" Kleine Aufmerksamkeiten zeigen, dass du denkst. Gemeinsam Entscheidungen treffen.</p>
+      </div>
+      <div class="partner-card reveal">
+        <h3>🏥 Zu Vorsorgen mitkommen</h3>
+        <p>Beim ersten Ultraschall dabei sein – ein unvergesslicher Moment! Zu wichtigen Terminen mitgehen (ETS, Organscreening). Fragen stellen, notieren. Gemeinsam den Geburtsplan besprechen. Geburtsvorbereitungskurs besuchen.</p>
+      </div>
+      <div class="partner-card reveal">
+        <h3>🍳 Praktische Hilfe</h3>
+        <p>Haushalt übernehmen wenn nötig. Einkaufen, kochen, putzen. Im 3. Trimester: Socken anziehen, Schuhe binden. Kliniktasche vorbereiten. Auto-Kindersitz montieren. Babyzimmer gestalten – gemeinsam macht es mehr Spaß.</p>
+      </div>
+      <div class="partner-card reveal">
+        <h3>👶 Bindung zum Baby aufbauen</h3>
+        <p>Babybewegungen spüren und darauf reagieren. Mit dem Bauch sprechen und vorlesen – das Baby hört ab SSW 24 gut! Hände auf den Bauch legen wenn Baby tritt. Namen überlegen. Träume teilen.</p>
+      </div>
+      <div class="partner-card reveal">
+        <h3>🎓 Geburtsbegleitung</h3>
+        <p>Aktiver Geburtsbegleiter: Massieren, Wasser holen, motivieren, Positionen helfen wechseln. Wünsche der Gebärenden vertreten, wenn sie es nicht mehr kann. Ruhe bewahren. Den Moment dokumentieren (wenn gewünscht).</p>
+      </div>
+      <div class="partner-card reveal">
+        <h3>🕊️ Elternzeit nehmen</h3>
+        <p>In Deutschland haben beide Elternteile Anspruch auf bis zu 3 Jahre Elternzeit. Partnerschaftsbonus: 2 weitere Monate Elterngeld wenn beide gleichzeitig in Elternzeit gehen. Frühzeitig beim Arbeitgeber anmelden (mind. 7 Wochen vorher).</p>
+      </div>
+      <div class="partner-card reveal">
+        <h3>💼 Rechtliches & Finanzielles</h3>
+        <p>Krankenversicherung des Kindes klären (familienversichert?). Kindergeld beantragen (Familienkasse). Elterngeld beantragen (frühestens nach Geburt). Testament aktualisieren. Sorgerecht und Namensregelung besprechen. Steuerklassen überprüfen.</p>
+      </div>
+      <div class="partner-card reveal">
+        <h3>❤️ Die eigene Psyche</h3>
+        <p>Auch Partner können pränatale Ängste entwickeln. Ca. 4–10% der werdenden Väter/Partner entwickeln eine Depression. Offen über Gefühle sprechen. Eigene Bedürfnisse nicht vergessen. Gemeinsam stärker werden.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── SECTION: RECHNER ── -->
+<section id="rechner">
+  <div class="container-narrow" style="text-align:center">
+    <span class="section-label">Werkzeuge</span>
+    <h2 class="section-title reveal">Geburtstermin berechnen</h2>
+    <p class="section-intro reveal" style="margin:0 auto 3rem">Berechne deinen voraussichtlichen Geburtstermin (ET) ganz einfach – nach der Naegele-Regel oder anhand des Empfängnisdatums.</p>
+
+    <div class="calc-card reveal">
+      <h3>🍼 Terminrechner</h3>
+      <div class="form-group">
+        <label>Berechnungsmethode</label>
+        <select id="calcMethod" onchange="updateCalcForm()">
+          <option value="lmp">Letzter Menstruationstag (empfohlen)</option>
+          <option value="conception">Empfängnisdatum</option>
+          <option value="ultrasound">SSW laut Ultraschall</option>
+        </select>
+      </div>
+      <div class="form-group" id="lmpGroup">
+        <label>Erster Tag der letzten Menstruation</label>
+        <input type="date" id="lmpDate">
+      </div>
+      <div class="form-group" id="cycleGroup">
+        <label>Zykluslänge (Tage)</label>
+        <input type="number" id="cycleLen" value="28" min="21" max="35">
+      </div>
+      <div class="form-group" id="conceptionGroup" style="display:none">
+        <label>Empfängnisdatum</label>
+        <input type="date" id="conceptionDate">
+      </div>
+      <div class="form-group" id="ssGroupDate" style="display:none">
+        <label>Datum des Ultraschalls</label>
+        <input type="date" id="ultrasoundDate">
+      </div>
+      <div class="form-group" id="ssGroupWeek" style="display:none">
+        <label>SSW laut Ultraschall</label>
+        <input type="number" id="ultrasoundSSW" min="4" max="40" value="12">
+      </div>
+      <button class="btn btn-primary" style="width:100%" onclick="calculateDueDate()">Geburtstermin berechnen</button>
+      <div class="calc-result" id="calcResult">
+        <div class="big" id="dueDateDisplay">—</div>
+        <div class="small" id="currentWeekDisplay">Lade...</div>
+        <div class="small" id="daysLeftDisplay" style="margin-top:.4rem"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── SECTION: CHECKLISTEN ── -->
+<section id="checkliste">
+  <div class="container">
+    <span class="section-label">Vorbereitung</span>
+    <h2 class="section-title reveal">Checklisten für die Schwangerschaft</h2>
+    <p class="section-intro reveal">Damit du nichts vergisst! Klicke auf die Punkte um sie abzuhaken.</p>
+
+    <div class="checklist-group reveal">
+      <h3>✅ Erstes Trimester (SSW 1–13)</h3>
+      <ul class="checklist" id="cl1">
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Schwangerschaftstest positiv: Gynäkologen anrufen</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Ersten Termin beim Gynäkologen vereinbaren</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Folsäure-Supplement nehmen (400–800 µg täglich)</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Alkohol, Rauchen und Drogen sofort stoppen</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Mutterpass erhalten und sicher aufbewahren</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Krankenkasse informieren</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Medikamente mit Arzt besprechen</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Hebamme suchen und buchen (frühzeitig!)</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Arbeitgeber über Schwangerschaft informieren</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Mutterschutzgesetz informieren</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Elterngeld-Anspruch prüfen & planen</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Ersttrimester-Screening besprechen (SSW 11–13)</span></li>
+      </ul>
+    </div>
+
+    <div class="checklist-group reveal">
+      <h3>📋 Zweites Trimester (SSW 14–27)</h3>
+      <ul class="checklist" id="cl2">
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Geburtsvorbereitungskurs anmelden (früh buchen!)</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Geburtsklinik besichtigen und anmelden</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Organscreening-Ultraschall (SSW 18–22)</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Geburtsplan beginnen zu schreiben</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Babyzimmer / Schlafplatz planen</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Kinderwagen und wichtige Baby-Ausrüstung kaufen</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Elternzeit beim Arbeitgeber anmelden</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Elterngeld-Antrag vorbereiten</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Schwangerschaftsyoga oder Aquafitness beginnen</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Zahnarztkontrolle (kostenlos, 2x in der SS)</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Glucosetoleranztest (SSW 24–28)</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Stillen vs. Flasche: Informationen sammeln</span></li>
+      </ul>
+    </div>
+
+    <div class="checklist-group reveal">
+      <h3>🏁 Drittes Trimester (SSW 28–40)</h3>
+      <ul class="checklist" id="cl3">
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Kliniktasche packen (ab SSW 36)</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Autositz kaufen und montieren lassen</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Geburtsvorbereitungskurs abschließen</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Geburtsplan finalisieren</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>3. Ultraschall (SSW 29–32)</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Babyzimmer fertigstellen</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Notrufnummern und Weganfahrt zur Klinik klären</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Babykleidung waschen (mit mildem Waschmittel)</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Familienmitglieder und Freunde informieren</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Stillen: Stillkissen besorgen, Stillberatung planen</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Nachsorgehebamme organisieren</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Geburtsanzeige / Karten gestalten</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Freezer-Meals vorbereiten für die erste Zeit</span></li>
+        <li onclick="toggleCheck(this)"><span class="check-box">✓</span><span>Testament aktualisieren</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── SECTION: GLOSSAR ── -->
+<section id="glossar">
+  <div class="container">
+    <span class="section-label">Lexikon</span>
+    <h2 class="section-title reveal">Glossar – wichtige Begriffe</h2>
+    <p class="section-intro reveal">Die Welt der Schwangerschaft hat ihre eigene Sprache. Hier findest du die wichtigsten medizinischen Begriffe einfach erklärt.</p>
+
+    <dl class="glossar-grid">
+      <div class="glossar-item reveal"><dt>Amniocentese</dt><dd>Fruchtwasserpunktion: Entnahme von Fruchtwasser zur genetischen Untersuchung (invasiv, nach SSW 15).</dd></div>
+      <div class="glossar-item reveal"><dt>Blastozyste</dt><dd>Entwicklungsstadium des befruchteten Eies ca. 5 Tage nach Befruchtung, kurz vor der Einnistung in die Gebärmutter.</dd></div>
+      <div class="glossar-item reveal"><dt>Braxton-Hicks-Wehen</dt><dd>Harmlose "Übungswehen" ohne Öffnung des Muttermundes. Kommen unregelmäßig, ohne zu schmerzen.</dd></div>
+      <div class="glossar-item reveal"><dt>CTG (Kardiotokographie)</dt><dd>Messung der kindlichen Herzfrequenz und der Wehentätigkeit. Wird ab SSW 28 bei Verdacht und ab SSW 36 regelmäßig durchgeführt.</dd></div>
+      <div class="glossar-item reveal"><dt>Corpus luteum</dt><dd>Gelbkörper: Entsteht nach dem Eisprung aus dem geplatzten Follikel und produziert Progesteron.</dd></div>
+      <div class="glossar-item reveal"><dt>Dezidua</dt><dd>Veränderte Gebärmutterschleimhaut während der Schwangerschaft, aus der die Plazenta entsteht.</dd></div>
+      <div class="glossar-item reveal"><dt>Dopplersonographie</dt><dd>Ultraschall zur Messung des Blutflusses in Nabelschnur und Gebärmutterarterien. Beurteilt die Versorgung des Babys.</dd></div>
+      <div class="glossar-item reveal"><dt>ETS (Ersttrimester-Screening)</dt><dd>Kombinierter Test aus NT-Messung und Bluttest zur Risikoeinschätzung von Chromosomenanomalien (SSW 11–13).</dd></div>
+      <div class="glossar-item reveal"><dt>Frühgeburt</dt><dd>Geburt vor abgeschlossener SSW 37. Frühgeborene ab SSW 34 haben i.d.R. sehr gute Überlebenschancen.</dd></div>
+      <div class="glossar-item reveal"><dt>Gestationsdiabetes</dt><dd>Schwangerschaftsdiabetes: Zuckerstoffwechselstörung während der Schwangerschaft. Betrifft 4–8% der Schwangeren.</dd></div>
+      <div class="glossar-item reveal"><dt>GBS (Gruppe-B-Streptokokken)</dt><dd>Bakterien, die bei 20% der Frauen im Genitaltrakt vorkommen. Können beim Neugeborenen Infektionen auslösen.</dd></div>
+      <div class="glossar-item reveal"><dt>hCG</dt><dd>Humanes Choriongonadotropin – das "Schwangerschaftshormon". Vom Embryo produziert, von Schwangerschaftstests detektiert.</dd></div>
+      <div class="glossar-item reveal"><dt>Hyperemesis gravidarum</dt><dd>Schwere Form der Schwangerschaftsübelkeit mit häufigem Erbrechen, die medizinische Behandlung erfordert.</dd></div>
+      <div class="glossar-item reveal"><dt>Kindslage</dt><dd>Position des Babys im Uterus. Optimal: Schädellage (Kopf unten). Problematisch: Beckenendlage (Steiß unten).</dd></div>
+      <div class="glossar-item reveal"><dt>Kolostrum</dt><dd>Vormilch, die die Brust schon vor der Geburt produziert. Reich an Antikörpern und Nährstoffen, optimal für Neugeborene.</dd></div>
+      <div class="glossar-item reveal"><dt>Lanugo</dt><dd>Feines Flaumhaar, das den Körper des Fötus bedeckt. Schützt die Haut und fällt vor oder kurz nach der Geburt aus.</dd></div>
+      <div class="glossar-item reveal"><dt>Mekonium</dt><dd>Kindspech: Erster Stuhl des Neugeborenen, dunkelgrün-schwarz. Entsteht aus verschlucktem Fruchtwasser und abgestorbenen Zellen.</dd></div>
+      <div class="glossar-item reveal"><dt>NIPT</dt><dd>Nicht-invasiver Pränataltest: Bluttest aus mütterlichem Blut zur Erkennung von Chromosomenstörungen (z.B. Trisomie 21). Ab SSW 9 möglich.</dd></div>
+      <div class="glossar-item reveal"><dt>Nidation</dt><dd>Einnistung der Blastozyste in die Gebärmutterschleimhaut, ca. 6–7 Tage nach Befruchtung.</dd></div>
+      <div class="glossar-item reveal"><dt>Oxytozin</dt><dd>Bindungshormon, das auch Wehen auslöst. Wird natürlich beim Stillen und Körperkontakt ausgeschüttet, auch synthetisch zur Geburtseinleitung eingesetzt.</dd></div>
+      <div class="glossar-item reveal"><dt>PDA (Periduralanästhesie)</dt><dd>Rückenmarknahe Betäubung zur Schmerzlinderung unter der Geburt. Über einen Katheter im Epiduralraum verabreicht.</dd></div>
+      <div class="glossar-item reveal"><dt>Plazenta (Mutterkuchen)</dt><dd>Organ zwischen Mutter und Kind, das Nährstoffe und Sauerstoff überträgt, Abfallstoffe abbaut und Hormone produziert.</dd></div>
+      <div class="glossar-item reveal"><dt>Postpartale Depression</dt><dd>Depressive Episode nach der Geburt, betrifft ca. 10–20% der Mütter. Gut behandelbar, bitte Hilfe suchen!</dd></div>
+      <div class="glossar-item reveal"><dt>Präeklampsie</dt><dd>Schwangerschaftsvergiftung: Hoher Blutdruck + Eiweiß im Urin nach SSW 20. Ernste Komplikation, sofortige Behandlung nötig.</dd></div>
+      <div class="glossar-item reveal"><dt>Progesteron</dt><dd>Schwangerschaftshormon, das die Gebärmuttermuskulatur entspannt und den Körper auf die Schwangerschaft vorbereitet.</dd></div>
+      <div class="glossar-item reveal"><dt>Sectio (Kaiserschnitt)</dt><dd>Entbindung durch chirurgischen Einschnitt in Bauchdecke und Gebärmutter. Primär (geplant) oder sekundär (Notfall).</dd></div>
+      <div class="glossar-item reveal"><dt>Surfactant</dt><dd>Oberflächenaktiver Stoff in den Lungenbläschen, der verhindert, dass sie kollabieren. Reift ab ca. SSW 32–34.</dd></div>
+      <div class="glossar-item reveal"><dt>SSW</dt><dd>Schwangerschaftswoche. Gezählt ab erstem Tag der letzten Menstruation (LMP). SSW 6+3 = 6 Wochen und 3 Tage.</dd></div>
+      <div class="glossar-item reveal"><dt>Toxoplasmose</dt><dd>Infektion durch Parasiten (v.a. aus Katzenkot, rohem Fleisch). In der Schwangerschaft gefährlich – Handschuhe beim Gärtnern, rohes Fleisch meiden!</dd></div>
+      <div class="glossar-item reveal"><dt>Trisomie 21 (Down-Syndrom)</dt><dd>Chromosomenstörung mit einem zusätzlichen Chromosom 21. Häufigste Chromosomenstörung, tritt häufiger bei höherem Mutteralter auf.</dd></div>
+      <div class="glossar-item reveal"><dt>Vena-Cava-Syndrom</dt><dd>Kompression der unteren Hohlvene durch Gebärmutter bei Rückenlage. Ab SSW 20 flache Rückenlage meiden.</dd></div>
+      <div class="glossar-item reveal"><dt>Vernix caseosa</dt><dd>Käseschmiere: Weißliche Schutzschicht auf der Babyhaut. Schützt im Fruchtwasser und hat antibakterielle Wirkung.</dd></div>
+    </dl>
+  </div>
+</section>
+
+
+<!-- ── SECTION: FAQ ── -->
+<section id="faq">
+  <div class="container-narrow">
+    <span class="section-label">Häufige Fragen</span>
+    <h2 class="section-title reveal">FAQ – Häufig gestellte Fragen</h2>
+
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+          <h3>Wie früh kann ich eine Schwangerschaft testen?</h3>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">Moderne Frühschwangerschaftstests können ab dem ersten Tag der ausgebliebenen Periode (also ca. SSW 4) positiv sein. Manche Tests werben mit noch früheren Ergebnissen (ab 4 Tage vor Periodenausbleiben), aber die Treffsicherheit ist dann noch geringer. Für ein verlässliches Ergebnis: Am besten morgendlichen Urin verwenden (höhere hCG-Konzentration) und bei einem unklaren Ergebnis nach 2–3 Tagen wiederholen.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+          <h3>Ist leichte Blutung am Anfang normal?</h3>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">Ein leichtes Einnistungsbluten (Implantationsblutung) kann ca. 6–10 Tage nach der Befruchtung auftreten und ist rosa bis hellbraun, sehr leicht und kurz. Das ist normal. Leichte Schmierblutungen in den ersten Wochen kommen bei ca. 20% der Schwangerschaften vor. Stärkere Blutungen, Blutungen mit Krämpfen oder Blutungen nach SSW 12 sollten immer ärztlich abgeklärt werden.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+          <h3>Wann sollte ich eine Hebamme suchen?</h3>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">So früh wie möglich – am besten sofort nach dem positiven Schwangerschaftstest! In vielen Städten ist der Markt für Hebammen sehr angespannt. Gute Hebammen sind oft schon Monate voraus ausgebucht. Du hast nach deutschem Recht Anspruch auf eine Hebamme während Geburt und Wochenbett. Suche über die Datenbank auf www.hebammensuche.de oder frage in deiner Gynäkologiepraxis nach Empfehlungen.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+          <h3>Darf ich reisen in der Schwangerschaft?</h3>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">In einer unkomplizierten Schwangerschaft ist Reisen grundsätzlich möglich. Das 2. Trimester gilt als die reisestabilste Phase. Flugreisen sind bis SSW 36 i.d.R. möglich, aber viele Airlines verlangen ab SSW 28–32 ein Attest. Thromboserisiko bei Langstreckenflügen beachten: Kompressionsstrümpfe tragen, viel bewegen, viel trinken. Reiseziele mit schlechter medizinischer Versorgung, Malaria-Gebiete oder extreme Höhenlagen besser meiden. Immer Mutterpass mitnehmen!</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+          <h3>Was ist Mutterschutz und wann beginnt er?</h3>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">Der gesetzliche Mutterschutz beginnt 6 Wochen vor dem errechneten Geburtstermin (Schutzfrist vorher) und endet 8 Wochen nach der Geburt (12 Wochen bei Frühgeburt oder Mehrlingsgeburt). Während dieser Zeit besteht ein Beschäftigungsverbot, du erhältst Mutterschaftsgeld von der Krankenkasse plus Arbeitgeberzuschuss. Informiere deinen Arbeitgeber spätestens 3 Monate vor Mutterschutzbeginn über deine Schwangerschaft.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+          <h3>Wie beantrage ich Elterngeld?</h3>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">Elterngeld wird nach der Geburt beantragt (rückwirkend bis zu 3 Monate möglich). Das Basiselterngeld beträgt 65–67% des Netto-Einkommens (min. 300€, max. 1.800€ monatlich) für 12 Monate (+ 2 Partnermonate). Elterngeld Plus erlaubt doppelte Bezugsdauer bei halber Rate. Der Antrag wird beim Elterngeldamt / Landratsamt gestellt. Tipp: Berechne deinen Anspruch schon in der Schwangerschaft auf www.elterngeld.net.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+          <h3>Was tun bei starker Übelkeit?</h3>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">Leichte bis moderate Übelkeit lässt sich oft mit kleinen, häufigen Mahlzeiten, Ingwertee, Ingwerkapseln, B6-Vitamin, Akupressurarmband und frischer Luft lindern. Salzstangen vor dem Aufstehen morgens essen. Übelkeitsauslöser identifizieren und meiden. Bei schwerem Verlauf (Hyperemesis gravidarum mit Gewichtsverlust, Dehydratation, Unfähigkeit zu trinken) ist dringend ärztliche Hilfe nötig – es gibt wirksame Medikamente, die für Schwangere zugelassen sind.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+          <h3>Wie erkenne ich echte Wehen?</h3>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">Echte Geburtswehen sind regelmäßig, werden stärker und länger, kommen in kürzeren Abständen (Muster: alle 5 Min., 1 Min. lang, 1 Stunde = 5-1-1-Regel) und lassen durch Umhergehen nicht nach. Braxton-Hicks-Übungswehen sind unregelmäßig, bleiben gleich stark, werden bei Bewegung und Lagewechsel besser. Weitere Zeichen des Geburtsbeginns: Zeichnen (Schleimpfropf), Blasensprung (warme Flüssigkeit), Rückenschmerzen. Im Zweifel: Klinik anrufen!</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+          <h3>Wann soll ich in die Klinik fahren?</h3>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">Als Faustregel gilt die 5-1-1-Regel: Wehen alle 5 Minuten, 1 Minute Dauer, 1 Stunde lang. Bei Erstgebärenden gilt oft etwas mehr Zeit. Sofort in die Klinik bei: Blasensprung, starken Blutungen, nachlassenden Kindsbewegungen, sehr starken Schmerzen oder einem unguten Gefühl. Für Mehrgebärende gilt: Früher fahren, da die Geburt schneller gehen kann. Im Zweifel die Klinik anrufen – sie beraten dich gerne!</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+          <h3>Was ist das Wochenbett und wie lange dauert es?</h3>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">Das Wochenbett bezeichnet die Zeit nach der Geburt, in der sich Körper und Geist von der Schwangerschaft und Geburt erholen. Es dauert offiziell 6–8 Wochen, aber die Erholung kann länger dauern. In dieser Zeit: Zurückbildung der Gebärmutter, Wochenfluss (Lochien), Stillen beginnen, Beckenboden kräftigen. Eine Nachsorgehebamme begleitet dich in dieser Zeit zu Hause (von der Krankenkasse finanziert!). Das Wichtigste: Ruhe, Unterstützung annehmen, auf den eigenen Körper hören.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <p>🌸 Schwangerschaft</p>
+      <small>Diese Website bietet allgemeine Informationen und ersetzt keine medizinische Beratung. Wende dich bei gesundheitlichen Fragen immer an deine Ärztin/deinen Arzt oder deine Hebamme. Alle Angaben wurden sorgfältig recherchiert, können aber medizinischen Entwicklungen hinterherhinken.</small>
+    </div>
+    <div class="footer-col">
+      <h4>Themen</h4>
+      <ul>
+        <li><a href="#trimester">Trimester-Übersicht</a></li>
+        <li><a href="#entwicklung">Baby-Entwicklung</a></li>
+        <li><a href="#symptome">Symptome</a></li>
+        <li><a href="#ernaehrung">Ernährung</a></li>
+        <li><a href="#vorsorge">Vorsorge</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Geburt</h4>
+      <ul>
+        <li><a href="#geburt">Geburtsarten</a></li>
+        <li><a href="#kliniktasche">Kliniktasche</a></li>
+        <li><a href="#checkliste">Checklisten</a></li>
+        <li><a href="#rechner">Terminrechner</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Wohlbefinden</h4>
+      <ul>
+        <li><a href="#sport">Sport & Bewegung</a></li>
+        <li><a href="#mental">Mentale Gesundheit</a></li>
+        <li><a href="#partner">Partner</a></li>
+        <li><a href="#glossar">Glossar</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Schwangerschaft-Info — Alle Rechte vorbehalten</span>
+    <span>Erstellt mit ❤️ für werdende Mütter & Familien</span>
+  </div>
+</footer>
+
+
+<!-- ── JAVASCRIPT ── -->
+<script>
+// ── Mobile Navigation ──
+function toggleMobileNav() {
+  const drawer = document.getElementById('navDrawer');
+  const btn = document.getElementById('navHamburger');
+  const isOpen = drawer.classList.toggle('open');
+  btn.classList.toggle('open', isOpen);
+  btn.setAttribute('aria-label', isOpen ? 'Menü schließen' : 'Menü öffnen');
+}
+function closeMobileNav() {
+  document.getElementById('navDrawer').classList.remove('open');
+  document.getElementById('navHamburger').classList.remove('open');
+}
+
+// Close drawer when clicking outside
+document.addEventListener('click', function(e) {
+  const drawer = document.getElementById('navDrawer');
+  const btn = document.getElementById('navHamburger');
+  if (drawer.classList.contains('open') && !drawer.contains(e.target) && !btn.contains(e.target)) {
+    closeMobileNav();
+  }
+});
+
+// ── Toggle Week Accordion ──
+function toggleWeek(header) {
+  const item = header.closest('.week-item');
+  item.classList.toggle('open');
+}
+
+// ── Toggle FAQ ──
+function toggleFaq(item) {
+  item.classList.toggle('open');
+}
+
+// ── Toggle Checklist item ──
+function toggleCheck(li) {
+  li.classList.toggle('checked');
+}
+
+// ── Toggle Bag item ──
+function toggleBag(li) {
+  li.classList.toggle('bag-checked');
+}
+
+// ── Tabs ──
+function showTab(tabId, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── Calculator ──
+function updateCalcForm() {
+  const method = document.getElementById('calcMethod').value;
+  document.getElementById('lmpGroup').style.display = method === 'lmp' ? 'block' : 'none';
+  document.getElementById('cycleGroup').style.display = method === 'lmp' ? 'block' : 'none';
+  document.getElementById('conceptionGroup').style.display = method === 'conception' ? 'block' : 'none';
+  document.getElementById('ssGroupDate').style.display = method === 'ultrasound' ? 'block' : 'none';
+  document.getElementById('ssGroupWeek').style.display = method === 'ultrasound' ? 'block' : 'none';
+}
+
+function calculateDueDate() {
+  const method = document.getElementById('calcMethod').value;
+  let dueDate, today = new Date();
+  today.setHours(0,0,0,0);
+
+  if (method === 'lmp') {
+    const lmp = new Date(document.getElementById('lmpDate').value);
+    const cycle = parseInt(document.getElementById('cycleLen').value) || 28;
+    if (!document.getElementById('lmpDate').value) { alert('Bitte Datum eingeben.'); return; }
+    dueDate = new Date(lmp);
+    dueDate.setDate(dueDate.getDate() + 280 + (cycle - 28));
+  } else if (method === 'conception') {
+    const con = new Date(document.getElementById('conceptionDate').value);
+    if (!document.getElementById('conceptionDate').value) { alert('Bitte Datum eingeben.'); return; }
+    dueDate = new Date(con);
+    dueDate.setDate(dueDate.getDate() + 266);
+  } else {
+    const usDate = new Date(document.getElementById('ultrasoundDate').value);
+    const ssw = parseInt(document.getElementById('ultrasoundSSW').value) || 12;
+    if (!document.getElementById('ultrasoundDate').value) { alert('Bitte Datum eingeben.'); return; }
+    const daysPregnant = ssw * 7;
+    const lmpCalc = new Date(usDate);
+    lmpCalc.setDate(lmpCalc.getDate() - daysPregnant);
+    dueDate = new Date(lmpCalc);
+    dueDate.setDate(dueDate.getDate() + 280);
+  }
+
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  document.getElementById('dueDateDisplay').textContent = dueDate.toLocaleDateString('de-DE', options);
+
+  const daysPreg = Math.max(0, Math.floor((today - (new Date(dueDate.getTime() - 280*24*60*60*1000))) / (1000*60*60*24)));
+  const sswCurrent = Math.floor(daysPreg / 7);
+  const dayInWeek = daysPreg % 7;
+
+  let weekText = '';
+  if (daysPreg >= 0 && sswCurrent <= 42) {
+    weekText = `Aktuell: ${sswCurrent}. SSW + ${dayInWeek} Tage`;
+  }
+
+  const daysLeft = Math.ceil((dueDate - today) / (1000*60*60*24));
+  let daysText = '';
+  if (daysLeft > 0) {
+    daysText = `Noch ${daysLeft} Tage bis zum errechneten Termin`;
+  } else if (daysLeft === 0) {
+    daysText = '🎉 Heute ist dein errechneter Geburtstermin!';
+  } else {
+    daysText = `${Math.abs(daysLeft)} Tage nach dem errechneten Termin`;
+  }
+
+  document.getElementById('currentWeekDisplay').textContent = weekText;
+  document.getElementById('daysLeftDisplay').textContent = daysText;
+  document.getElementById('calcResult').classList.add('show');
+}
+
+// ── Scroll Reveal ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
